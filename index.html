@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor Dr. Ir. Syafiie Syamaun, ST. DEA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=15uT2YVxcygUoCfi5htf3aXxNcrK4os77" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -67,22 +68,22 @@
             font-size: 1.1rem;
         }
         
-        .publication-grid {
+        .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
         
-        .publication-card {
-            background: white;
+        .research-card {
+            background: rgb(134, 219, 240);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
         }
         
-        .publication-card:hover {
+        .research-card:hover {
             transform: translateY(-10px);
         }
         
@@ -110,7 +111,7 @@
             padding: 25px;
         }
         
-        .article-tag {
+        .research-tag {
             display: inline-block;
             padding: 5px 15px;
             border-radius: 20px;
@@ -119,7 +120,7 @@
             margin-bottom: 15px;
         }
         
-        .article-publish {
+        .research-publish {
             background: #2ecc71;
             color: white;
         }
@@ -238,7 +239,7 @@
             color: #666;
         }
         
-        .comparison {
+        .publication {
             background: white;
             border-radius: 15px;
             padding: 30px;
@@ -247,7 +248,21 @@
             overflow-x: auto;
         }
         
-        .comparison h2 {
+        .publication h2 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .research {
+            background: rgb(171, 211, 223);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            overflow-x: auto;
+        }
+        
+        .research h2 {
             color: #1a2980;
             margin-bottom: 20px;
             text-align: center;
@@ -279,7 +294,7 @@
             color: #ffc107;
         }
         
-        .try-editor {
+        .invited_lecturer {
             background: white;
             border-radius: 15px;
             padding: 30px;
@@ -287,7 +302,7 @@
             margin-bottom: 40px;
         }
         
-        .editor-container {
+        .lecutre-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
@@ -426,7 +441,7 @@
                 gap: 15px;
             }
             
-            .editor-container {
+            .lecture-container {
                 flex-direction: column;
             }
         }
@@ -455,127 +470,117 @@
 <p>Prof. Syafiie's current work emphasizes data-driven modeling, time-delay systems, and intelligent control solutions for real-world challenges in engineering, healthcare, and sustainability.</p>
             <p><strong>Key words:</strong> Process Control, Biomedical systems, Machine Learning, Predictive Control, Time delay systems, Stability and H&#8734; Control.</p>
         </div>
-        
-        <div class="publication-grid">
-            <div class="publication-card">
+    <div class="research">
+        <h2>Research Interests</h2>
+        <p style="margin-bottom: 20px;">My research lies at the intersection of <strong> systems and control theory, data-driven dynamic
+            modeling, and process engineering</strong>, addressing applications across chemical
+            engineering, energy systems, robotics, and healthcare. A central
+            theme of my work is the development of robust controllers, observer synthesis,
+            and learning-based frameworks for deterministic and stochastic systems with timevarying
+            delays, bridging mathematical rigor with real-world engineering challenges.
+            </p>
+        <div class="research-grid">
+            <div class="research-card">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-book-reader"></i></div>
                     <div>
-                        <h3>Journal Articles</h3>
-                        <span class="article-tag article-publish">Published</span>
+                        <h3>Machine Learning</h3>
+                        <span class="research-tag research-publish">Agentic AI</span>
                     </div>
                 </div>
                 <div class="card-body">
-                    <p>The topics are largely in control systems, process control, and applications in biomedical, chemical, energy, environmental, and materials engineering.</p>
-                    <div class="scroll-box" id="infoBox">
-                        <ol class="feature-list">
-                            <li>IntelliSense code completion</li>
-                            <li><i class="fas fa-check"></i> Built-in Git integration</li>
-                            <li><i class="fas fa-check"></i> Debugging support</li>
-                            <li><i class="fas fa-check"></i> Thousands of extensions</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                            <li><i class="fas fa-check"></i> Integrated terminal</li>
-                        </ol>
-                    </div>
+                    <p>
+                    Syafiie’s central research contributions lie at the intersection of <strong>control engineering</strong>,
+                    <strong>reinforcement learning</strong>, and <strong>chemical process systems</strong>. His work tackles the
+                    critical problem that many real-world chemical processes—such as pH control, oxidation reactions, and wastewater
+                    treatment—are highly nonlinear, time-varying, and difficult to model accurately using first-principles approaches.
+                    </p>
+                    <p>
+                    To address this, Syafiie has extensively developed and validated a framework known as
+                    <strong>Model-Free Learning Control (MFLC)</strong>, which adapts <strong>reinforcement learning (RL)</strong>—
+                    particularly <strong>Q-learning</strong>—to practical, real-time process control applications.
+                    </p>
+                    <p>Within learning control or adaptive control frameworks, one seeks to adjust controller parameters in real time 
+                    (or across repeated trials) to track desired trajectories or reject disturbances. His focus on learning control 
+                    suggests that he works with techniques such as iterative learning control (ILC), 
+                    reinforcement learning, adaptive model reference control, or other data-driven regulators. 
+                    Such control frameworks allow maintaining performance even in the absence of full system models.</p>
+                    <p>MFLC provides a natural foundation for integration with Agentic AI, 
+                        combining adaptive control theory with autonomous artificial intelligence to solve complex real-world problems. 
+                        MFLC eliminates the need for explicit mathematical models by learning directly from input-output data, 
+                        adjusting control actions iteratively to maintain performance under uncertainty. 
+                        Agentic AI, on the other hand, represents a higher-level framework where intelligent agents perceive their environment, 
+                        plan, reason, and act autonomously toward defined goals. 
+                        When integrated, MFLC serves as the adaptive control core, ensuring real-time stability and robustness, 
+                        while Agentic AI functions as the cognitive layer that interprets context, sets goals, 
+                        and optimizes performance across broader operational scenarios.</p>
                 </div>
             </div>
             
-            <div class="publication-card">
+            <div class="research-card">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-book-open"></i></div>
                     <div>
-                        <h3>Conference Proceedings</h3>
-                        <span class="article-tag article-publish">Published</span>
+                        <h3>Control Theory</h3>
+                        <span class="research-tag research-publish">Time delay systems</span>
                     </div>
                 </div>
                 <div class="card-body">
-                    <p>A sophisticated text editor for code, markup and prose with a minimalist interface and powerful features.</p>
-                    
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Goto Anything quick navigation</li>
-                        <li><i class="fas fa-check"></i> Multiple selections</li>
-                        <li><i class="fas fa-check"></i> Command palette</li>
-                        <li><i class="fas fa-check"></i> Split editing</li>
-                        <li><i class="fas fa-check"></i> Highly customizable</li>
-                    </ul>
-                    
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h4><i class="fas fa-thumbs-up"></i> Pros</h4>
-                            <ul>
-                                <li>Extremely fast and lightweight</li>
-                                <li>Beautiful interface</li>
-                                <li>Powerful search and replace</li>
-                                <li>Great for large files</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4><i class="fas fa-thumbs-down"></i> Cons</h4>
-                            <ul>
-                                <li>Not completely free</li>
-                                <li>Smaller extension ecosystem than VS Code</li>
-                                <li>Less frequent updates</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <p>Dr. S. Syafiie’s research in <strong>control theory for time-delay systems</strong> 
+                            focuses on the development of robust and adaptive control strategies that account 
+                            for delays occurring in practical engineering and biological processes. 
+                            Time delays are common in chemical reactors, networked control systems, and physiological 
+                            regulation—where transport, communication, or actuation lags can destabilize feedback loops. 
+                            Dr. Syafiie has explored <em>H-infinity control</em> and <em>state-observer design</em> for systems 
+                            with multiple time delays, as evidenced by his invited lectures such as 
+                            <em>“H-infinity State-Observer Controller Synthesis for Multiple Time-Delay Systems”</em> 
+                            (King Abdulaziz University, 2019) and 
+                            <em>“Positive Evolution Control of Diabetes Delays Systems”</em> 
+                            (UPM/IEEE CSS Malaysia, 2016). His work highlights how delay-dependent stability analysis, 
+                            Lyapunov-Krasovskii methods, and linear matrix inequalities (LMIs) can be 
+                            combined to ensure robust control and estimation even when system responses are delayed or uncertain.</p>
+                        <p>Building on his broader expertise in <strong>model-free and learning-based control</strong>, 
+                            Dr. Syafiie applies these frameworks to manage dynamic processes with significant lags or 
+                            unknown delay parameters. His designs often integrate <em>robust H-infinity synthesis</em> 
+                            with adaptive or predictive mechanisms that compensate for delays in real time, maintaining stability 
+                            and performance under changing conditions. Applications of his methods include chemical process control, 
+                            where reaction and transport delays are unavoidable, and biomedical systems such as glucose-insulin regulation, 
+                            where physiological delays play a key role. Through these contributions, 
+                            Dr. Syafiie advances the control theory of time-delay systems by linking rigorous mathematical design 
+                            with practical engineering and biomedical implementations, 
+                            ensuring reliability and robustness in systems inherently affected by delay phenomena.</p>
                 </div>
             </div>
             
-            <div class="publication-card">
+            <div class="research-card">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-shapes"></i></div>
                     <div>
-                        <h3>Books and Notes</h3>
-                        <span class="article-tag article-publish">Published</span>
+                        <h3>Applications</h3>
+                        <span class="research-tag reseach-publish">Real world problems</span>
                     </div>
                 </div>
                 <div class="card-body">
-                    <p>Powerful IDE for modern JavaScript development with smart coding assistance and integrated tools.</p>
+                    <p>Dr. Syafiie has applied his expertise in control theory, especially model-free learning control, 
+                        robust control (H&infin;), PID/LQG controllers, and observer/controller synthesis, to a number of engineering, 
+                        biomedical, and industrial contexts. One recurring application area is biomedical systems, particularly diabetes 
+                        nd drug/insulin delivery. For example, he has published articles and delivered lectures on Automated Glycemic Control 
+                        with a Bionic Pancreas, showing how control methods (PID, LQG, H&infin;) can be used to manage physiological dynamics 
+                        and deliver insulin in a closed-loop system. He also addresses control in anesthesia and drug regulation, 
+                        demonstrating the translation of control-theoretic solutions to patient safety and clinical contexts.</p>
+                    <p>Another major application domain is chemical and process engineering: process control in mixing processes, 
+                        pH neutralization, feedback control in oil industry (oil wells), and refinery engineering. 
+                        He also lectures on control design for processes in the context of Industry 4.0, where automation, digitalization, 
+                        and smart control become critical. He works on applying advanced control methods to industrial process units, chemical plants, and 
+                        infrastructures that require stability, performance under uncertainty, and efficient control. </p>
                     
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Intelligent code completion</li>
-                        <li><i class="fas fa-check"></i> Error detection & quick-fixes</li>
-                        <li><i class="fas fa-check"></i> Powerful navigation</li>
-                        <li><i class="fas fa-check"></i> Refactoring tools</li>
-                        <li><i class="fas fa-check"></i> Integrated debugging</li>
-                    </ul>
-                    
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h4><i class="fas fa-thumbs-up"></i> Pros</h4>
-                            <ul>
-                                <li>Excellent code intelligence</li>
-                                <li>Great for large projects</li>
-                                <li>Comprehensive toolset</li>
-                                <li>Strong framework support</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4><i class="fas fa-thumbs-down"></i> Cons</h4>
-                            <ul>
-                                <li>Expensive subscription</li>
-                                <li>Resource-intensive</li>
-                                <li>Steep learning curve</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+    </div>     
                
-        <div class="comparison">
+        <div class="publication">
             <h2>My Publications</h2>
             
                 <p>Syafiie, S., & Tadeo, F. (2025). <a href= "https://drive.google.com/file/d/1tSjuRANxBdTZBizb8IhHUbpwzQ74BCnf/preview" class="pdf-viewer" allow="autoplay">
@@ -648,7 +653,7 @@
                 <p>Syafiie S, Razak MA. 
                     <a href="https://drive.google.com/file/d/1zzZJkp_JvEKzf-moxHIPMfj5u1eB4rGZ/preview" class="pdf-viewer" allow="autoplay">
                      H&#8734 State-Observer Controller Synthesis for Multiple Time-Delay Systems. </a>
-                    <em>In2023 IEEE 11th Conference on Systems</em>, Process \& Control (ICSPC) 2023 Dec 16 (pp. 131-136). IEEE.</p>
+                    <em>In2023 IEEE 11th Conference on Systems</em>, Process & Control (ICSPC) 2023 Dec 16 (pp. 131-136). IEEE.</p>
                 <p>Hermansson AW, Syafiie S. 
                     <a href="https://mypcs.com.my/journal/index.php/ajpc/article/view/18" class="pdf-viewer" allow="autoplay">
                     Bayesian-ANN controller for pH-control. </a>
@@ -742,6 +747,232 @@
                     <a href="https://drive.google.com/file/d/105pe5Z6R-skFmA4F14YXCZEMLnFeDasf/preview" class="pdf-viewer" allow="autoplay">
                     Single compartment modeling glutamine-glutamate-GABA system in neuron.</a> 
                     <em>In2016 IEEE EMBS Conference on Biomedical Engineering and Sciences (IECBES)</em> 2016 Dec 4 (pp. 528-532). IEEE.</p>
+                <p>Chang JJ, Syafiie S. 
+                    <a href="https://drive.google.com/file/d/1-j38U1y7zL90bd5ePjp6hRPCzqroPoX-/preview" class="pdf-viewer" allow="autoplay">
+                    Stability analysis of closed-loop anaesthesia system with nonlinear uncertainty: a circle criterion approach.</a> 
+                    <em>In 2016 IEEE EMBS Conference on Biomedical Engineering and Sciences (IECBES)</em> 2016 Dec 4 (pp. 664-668). IEEE.</p>
+                <p>Ethaib S, Omar R, Mazlina M, Radiah A, Syafiie S, Harun MY. 
+                    <a href="https://drive.google.com/file/d/12t9wNcc3F8b5frlzTEX4T2URHx1o8q_L/preview" class="pdf-viewer" allow="autoplay">
+                    Effect of microwave-assisted acid or alkali pretreatment on sugar release from Dragon fruit foliage. </a>
+                    <em>International Food Research Journal</em>. 2016 Dec 2;23.</p>
+                <p>Ethaib S, Omar R, Siti Mazlina MK, Dayang Radiah AB, Syafiie S. 
+                    <a href="https://drive.google.com/file/d/1iRRO9QHFxDUq3JyYGlVUGn2qejzOmTbb/preview" class="pdf-viewer" allow="autoplay">
+                    Microwave-assisted Dilute Acid Pretreatment and Enzymatic Hydrolysis of Sago Palm Bark. </a>
+                    <em>BioResources</em>. 2016 May 15;11(3).</p>
+                <p>Safakar M, Syafiie S, Yunus R. 
+                    <a href="https://drive.google.com/file/d/10y1-3pGVyQUnYTjLu9_Cjm21X7q23gfY/preview" class="pdf-viewer" allow="autoplay">
+                    CFD analysis of indoor chlorine gas dispersion storage: Temperatures, wind velocities and ventilation effects studies. </a>
+                    <em>Asean Journal Of Chemical Engineering</em>. 2016 Jun 1;16(1):1-4. </p>
+                <p>Noerhidajat, R. Yunus, Z. A. Zurina, S. Syafiie, V. Ramanaidu and U. Rashid, 
+                    <a href="https://drive.google.com/file/d/1gzEqsidRW2STYJrO2cOGMwSYQSsp7wuK/preview" class="pdf-viewer" allow="autoplay">
+                    Effect of high pressurized sterilization on oil palm fruit digestion operation. </a>
+                    <em>International Food Research Journal</em>. 2016;23(1):129. </p>
+                <p>Syafiie S, Valizadeh M. 
+                    <a href="https://drive.google.com/file/d/16iYaXNi1Oxg7as-Z22efAFO5eNkrjzk2/preview" class="pdf-viewer" allow="autoplay">
+                    Optimal planning of a biofuel supply chain using a multi-criteria optimisation model.</a> 
+                    <em>International Journal of Process Systems Engineering</em>. 2016;4(1):1-8.</p>
+                <p>Ethaib S, Omar R, Siti Mazlina MK, Dayang Radiah AB, Syafiie S. 
+                    <a href="https://drive.google.com/file/d/1iRRO9QHFxDUq3JyYGlVUGn2qejzOmTbb/preview" class="pdf-viewer" allow="autoplay">
+                    Microwave-assisted Dilute Acid Pretreatment and Enzymatic Hydrolysis of Sago Palm Bark.</a> 
+                    <em>BioResources</em>. 2016 May 15;11(3).</p>
+                <p>Hermansson AW, Syafiie S. 
+                    <a href="https://drive.google.com/file/d/12Mj_BD9RmqXzc-IoT7uEWqw3-1v2Mz89/preview" class="pdf-viewer" allow="autoplay">
+                    Model predictive control of pH neutralization processes: A review.</a> 
+                    <em>Control Engineering Practice</em>. 2015 Dec 1;45:98-109. </p>
+                <p>Noerhidajat, R. Yunus, Z.A. Zurina, S. Syafiie, T.S. Chang, 
+                    <a href="https://drive.google.com/file/d/16hOD5e7sh3rYtbG6ukgjZ1adzge3T0NP/preview" class="pdf-viewer" allow="autoplay">
+                    Modeling and simulation of heat and mass transfer in oil palm fruit digestion process,</a> 
+                    <em>Journal of Emerging Trends in Engineering and Applied Sciences</em> 6 (2), 136-143, 2015.</p>
+                <p>Chang JJ, Syafiie S, Kamil R, Lim TA. 
+                    <a href="https://drive.google.com/file/d/1Kz_ZBUcFYh6OmUEHRE-PihiQYEKakqps/preview" class="pdf-viewer" allow="autoplay">
+                    Automation of anaesthesia: a review on multivariable control.</a> 
+                    <em>Journal of clinical monitoring and computing.</em> 2015 Apr;29(2):231-9.</p>
+                <p>Chang JJ, Syafiie S, Kamil R, Lim TA. 
+                    <a href="https://drive.google.com/file/d/1FXCW8k5hEKJBKBmm1jqkOqFOsdcKzQ_o/preview" class="pdf-viewer" allow="autoplay">
+                    Nonlinear stability analysis of anaesthesia control system using circle criterion.</a> 
+                    <em>In APCChE</em> (2015: Melbourne, Vic.) 2015 Jan (pp. 362-368). Melbourne: Engineers Australia.</p>
+                <p>Amirkhani H, Yunus R, Rashid U, Salleh SF, Radhiah AD, Syam S. 
+                    <a href="https://drive.google.com/file/d/1QOyGyoWrCPkmLloXe3T7JvdqeLZd5bJe/preview" class="pdf-viewer" allow="autoplay">
+                    Low-temperature dilute acid hydrolysis of oil palm frond.</a> 
+                    <em>Chemical Engineering Communications.</em> 2015 Sep 2;202(9):1235-44.</p>
+                <p>Hermansson AW, Syafiie S. 
+                    <a href="https://drive.google.com/file/d/1FEKviysXZLbLKScns49tuJS4vybcI_IA/preview" class="pdf-viewer" allow="autoplay">
+                    Control of pH neutralization system using nonlinear model predictive control with I-controller.</a> 
+                    <em>In 2014 IEEE International Conference on Industrial Engineering and Engineering Management</em> 2014 Dec 9 (pp. 853-857). </p>
+                <p>Valizadeh M, Syafiie S, Ahamad IS. 
+                    <a href="https://drive.google.com/file/d/1rKWQTeqvTIIOi076KvqdsxiE81Zu6FPj/preview" class="pdf-viewer" allow="autoplay">
+                    Optimal planning of biodiesel supply chain using a linear programming model.</a> 
+                    <em>In 2014 IEEE International Conference on Industrial Engineering and Engineering Management</em> 2014 Dec 9 (pp. 1280-1284). </p>
+                <p>Safakar M, Syafiie S, Yunus R. 
+                    <a href="https://drive.google.com/file/d/1xrYYeem4wdXZQImHEdfxbFNlkc8hymSo/preview" class="pdf-viewer" allow="autoplay">
+                    CFD analysis chlorine gas dispersion in indoor storage: Temperatures with wind velocities effect studies. </a>
+                    <em>In 2014 IEEE International Conference on Industrial Engineering and Engineering Management</em> 2014 Dec 9 (pp. 1219-1222).</p>
+                <p>Chang, J.J., Syafiie, S., Ahmad, R.K.R. and Lim, T.A.,
+                    <a href="https://drive.google.com/file/d/1-KwiBUMB92kEYcGwxVYKDZvdfxQPMFPn/preview" class="pdf-viewer" allow="autoplay">
+                    ANFIS based model for Bispectral Index prediction.</a> 
+                    <em>In Recent Advances on Soft Computing and Data Mining</em>: Proceedings of The First International Conference on Soft Computing and Data Mining (SCDM-2014) 
+                    Universiti Tun Hussein Onn Malaysia, Johor, MalaysiaJune 16th-18th, 2014 May 29(pp. 133-142). Cham: Springer International Publishing.</p>
+                <p>Valizadeh M, Syafiie S, Ahamad IS.
+                    <a href="https://drive.google.com/file/d/1xrq9WAxnH-ryQskABg-0x02djvx3ptzZ/preview" class="pdf-viewer" allow="autoplay">
+                    Multi-objective particle swarm optimization for optimal planning of biodiesel supply chain in Malaysia.</a>  
+                    <em>In Recent Advances on Soft Computing and Data Mining</em>: Proceedings of The First International Conference on Soft Computing and Data Mining (SCDM-2014) 
+                    Universiti Tun Hussein Onn Malaysia, Johor, MalaysiaJune 16th-18th, 2014 May 29 (pp. 293-302). Cham: Springer International Publishing.</p>
+                <p>Syafiie S, Kwan CY. A 
+                    <a href="https://drive.google.com/file/d/1H___M32YmI7XfCbCEklw8xdZfFs2YZXs/preview" class="pdf-viewer" allow="autoplay">
+                    Comparative Study of Applying Active-Set and Interior Point Methods in MPC for Controlling Nonlinear pH Process.</a> 
+                    <em>Jurnal Rekayasa Kimia & Lingkungan</em>. 2014;10(1).</p>
+                <p>Ismail MH, Dalang S, Syam S, Izhar S.
+                    <a href="https://drive.google.com/file/d/1S_YZ9Q24GN_iSyZ8Y7SHmasMw6HU1npA/preview" class="pdf-viewer" allow="autoplay"> 
+                    A study on zeolite performance in waste treating ponds for treatment of palm oil mill effluent.</a> 
+                    <em>Journal of water resource and protection.</em> 2013 Jul 18;5(07):18.</p>
+                <p>Ahmad AL, Harris WA, Syafiie, Ooi BS. 
+                    <a href="https://drive.google.com/file/d/1ela5rjAoFQBBaVXPs0wRNmGuce_YN14M/preview" class="pdf-viewer" allow="autoplay">
+                    Removal of dye from wastewater of textile industry using membrane technology.</a> 
+                    <em>Jurnal Teknologi (Sciences & Engineering)</em>. 2012:31â-44.</p>
+                <p>Syafiie S, Chong PK, Chang JJ. 
+                    <a href="https://drive.google.com/file/d/1kMlu08IRwVRjRijbmfdQhUZ9HFOT7GR5/preview" class="pdf-viewer" allow="autoplay">
+                    Isoflurane inhalation regulated using positive system.</a> 
+                    <em>In 2011 Australian Control Conference</em> 2011 Nov 10 (pp. 464-468). IEEE.</p>
+                <p>Syafiie S, Tadeo F, Villafín M, Alonso AA. 
+                    <a href="https://drive.google.com/file/d/1-AEuO2dcurdnKwbyjHoWOYk5Rof_630b/preview" class="pdf-viewer" allow="autoplay">
+                    Learning control for batch thermal sterilization of canned foods.</a> 
+                    <em>ISA transactions</em>. 2011 Jan 1;50(1):82-90.</p>
+                <p>Syafiie S, Tadeo F, Martinez E, Alvarez T. 
+                    <a href="https://drive.google.com/file/d/1J6w5hZo0_2dn_vijyzSbA6N4B3I_iv9-/preview" class="pdf-viewer" allow="autoplay">
+                    Model-free control based on reinforcement learning for a wastewater treatment problem.</a> 
+                    <em>Applied Soft Computing.</em> 2011 Jan 1;11(1):73-82.</p>
+                <p>Hermansson AW, Syafiiey S, Noorz SM.
+                    <a href="https://drive.google.com/file/d/1x-swGpfZkGrqrdVT5uNKiIqa_Sy1z8WZ/preview" class="pdf-viewer" allow="autoplay"> 
+                    Multiple model predictive control of nonlinear pH neutralization system.</a> 
+                    <em>In 2010 IEEE International Conference on Industrial Engineering and Engineering Management</em> 2010 Dec 7 (pp. 301-304).Macau</p>
+                <p>Syafiie S, Ait Rami M, Tadeo F. 
+                    <a href="https://drive.google.com/file/d/1_0b8DNgfyl4WOgsbu00dvtOt1AC8FbqO/preview" class="pdf-viewer" allow="autoplay">
+                    Positive infusion of propofol drug during induction.</a> 
+                    <em>In 2010 IEEE International conference on industrial engineering and engineering management</em> 2010 Dec 7 (pp. 325-328). </p>
+                <p>Syafiie S, Tadeo F, Palacin L, de Prada C. 
+                    <a href="https://drive.google.com/file/d/1hRGcA1RpVkbgoDn-Pl8pMBJpzkHHV7JI/preview" class="pdf-viewer" allow="autoplay">
+                    Modelling of the pretreatment section for dynamic simulation of water production using reverse osmosis.</a> 
+                    <em>International Journal of Management Science and Engineering Management.</em> 2010 Jan 1;5(1):24-9.</p>
+                <p>Syafiie S, Tadeo F, Martinez E. 
+                    <a href="https://drive.google.com/file/d/1a4S4fL-8ZiAaX4suIAkg-KM2JvKtVn5b/preview" class="pdf-viewer" allow="autoplay">
+                    Q (&lambda;) learning technique for pH control.</a> 
+                    <em>In 2009 IEEE International Conference on Industrial Engineering and Engineering Management</em> 2009 Dec 8 (pp. 712-716).</p>
+                <p>Copot C, Syafiie S, Vargas S, De Keyser R, Van Langenhove L, Lazar C. 
+                    <a href="https://drive.google.com/file/d/1A3pQ4n8M9a-ggaUe28ylkUeuoaSA6NYX/preview" class="pdf-viewer" allow="autoplay">
+                    Carpet wear classification based on support vector machine pattern recognition approach.</a> 
+                    <em>In 2009 IEEE 5th International Conference on Intelligent Computer Communication and Processing</em> 2009 Aug 27 (pp. 161-164). IEEE.</p>
+                <p>Syafiie S, Tadeo F. 
+                    <a href="https://drive.google.com/file/d/1rYgJiz6bks_Dvb_HJ6VNhEc6iKKJ7ecE/preview" class="pdf-viewer" allow="autoplay">
+                    Improving command tracking for QFT controllers.</a> 
+                    <em>In 2009 European Control Conference (ECC)</em> 2009 Aug 23 (pp. 1812-1817). IEEE.</p>
+                <p>Syafiie S, Ni&ntilde;o J, Ionescu C, De Keyser R. 
+                    <a href="https://drive.google.com/file/d/1rZ57aveGqOd_legRNWZWB4jXh6YGhlnz/preview" class="pdf-viewer" allow="autoplay">
+                    NMPC for propofol drug dosing during anesthesia induction.</a> 
+                    <em>In L. Magni et al. (Eds.): Nonlinear Model Predictive Control: towards new challenging applications</em> 2009 May 18 (pp. 501-509). 
+                    Berlin, Heidelberg: Springer Berlin Heidelberg.</p>
+                <p>Ni&ntilde;o J, De Keyser R, Syafiie S, Ionescu C, Struys MM. 
+                    <a href="https://drive.google.com/file/d/1Ea6wca4n6QlDZ6ORyAWMwJhas1AlC4wv/preview" class="pdf-viewer" allow="autoplay">
+                    EPSAC controlled anesthesia with online gain adaptation.</a> 
+                    <em>International journal of adaptive control and signal processing.</em> 2009 May;23(5):455-71.</p>
+                <p>Copot C, De Keyser R, Orjuela Vargas SA, Van Langenhove L, Lazar C.
+                    <a href="https://drive.google.com/file/d/1QIMfmEokLdfhJnHofxSW2cpfxiMG6nzd/preview" class="pdf-viewer" allow="autoplay"> 
+                    Automatic carpet wear classification based on support vector machine and Haralick descriptors.</a> 
+                    <em>Buletinul Institutului Politehnic Din IASI, Secta IV Automatica Si Calculatoare</em> 2009;55(4):21-34. </p>
+                <p>Syafiie S, Tadeo F, Palacin L, de Prada C, Salazar J. 
+                    <a href="https://drive.google.com/file/d/1fQKzWqc5KYmMOY1C6j8UyZu_oCeJZN9m/preview" class="pdf-viewer" allow="autoplay">
+                    Modelling for dynamic simulation of pretreatment in Reverse Osmosis plants.</a> 
+                    <em>In 2008 IEEE International Conference on Industrial Engineering and Engineering Management</em> 2008 Dec 8 (pp. 1663-1667)</p>
+                <p>Syafiie S, Palacin L, De Prada C, Tadeo F. 
+                    <a href="https://drive.google.com/file/d/14PEZcu3ukxIiBYb1YefzHqlN-dwEBvgR/preview" class="pdf-viewer" allow="autoplay">
+                    Membrane modeling for simulation and control of reverse osmosis in desalination plants.</a> 
+                    <em>Proceedings. UKACC Control’08</em> , Manchester, UK, 2 - 4 September 2008.</p>
+                <p>Palacin L, de Prada C, Syafiie S, Tadeo F.
+                    <a href="https://drive.google.com/file/d/1r73Hydcuhhfx3vxWVTOhLT3bAQ_71ouf/preview" class="pdf-viewer" allow="autoplay"> 
+                    Library for dynamic simulation of reverse osmosis plants.</a> 
+                    <em>In Proceedings 20th European Modeling and Simulation Symposium</em>, Briatico, Italy 2008 Sep.</p>
+                <p>Syafiie S, Vilas C, Garcia MR, Tadeo F, Alonso AA, Martinez E. 
+                    <a href="https://drive.google.com/file/d/1igKhTUK1NoihrHum2S1l0zUF4X_UFLQi/preview" class="pdf-viewer" allow="autoplay">
+                    Intelligent control based on reinforcement learning for batch thermal sterilization of canned foods.</a> 
+                    <em>IFAC Proceedings Volumes.</em> 2008 Jan 1;41(2):3568-73.</p>
+                <p>Vargas SO, Copot C, Syafiie S, Vansteenkiste E, Philips W, Rooms F, Van Langenhove L, De Keyser R. 
+                    <a href="https://drive.google.com/file/d/1hbDR5vOZHzRb7ajGM_T95NUR4ZGUy_zq/preview" class="pdf-viewer" allow="autoplay">
+                    Carpet Wear Classification Using Coocurrence Matrices and Support Vector Machine.</a> 
+                    <em>InXIII Simposio de Tratamiento de Se&ntilde;ales</em>, Imágenes Y Visión Artificial 2008.</p>
+                <p>Syafiie S, Tadeo F, Martinez E, 
+                    <a href="https://drive.google.com/file/d/138KBgg0nASjFW8P-ZKnKyP0Gr1K0lFL5/preview" class="pdf-viewer" allow="autoplay">
+                    Model-Free Learning Control of Chemical Processes.</a>
+                    <em> Weber C, Elshaw M, Mayer NM. Reinforcement Learning.</em> 2008 Jan 1:295.</p>
+                <p> Syafiie S, Tadeo F, Martinez E.
+                    <a href="https://drive.google.com/file/d/1EVNsOF2Mtvi0cJSZdPs395do0b93JSnP/preview" class="pdf-viewer" allow="autoplay"> 
+                    Model-free learning control of neutralization processes using reinforcement learning.</a> 
+                    <em>Engineering Applications of Artificial Intelligence.</em> 2007 Sep 1;20(6):767-82.</p>
+                <p>Syafiie S, Tadeo F, Martinez E. 
+                    <a href="https://drive.google.com/file/d/120375oII5Ep8LhYPAmwwFGZjEM7mnIiV/preview" class="pdf-viewer" allow="autoplay">
+                    Coordinated control of wastewater oxidation processes under constrained incremental control.</a> 
+                    <em>In2007 European Control Conference (ECC)</em> 2007 Jul 2 (pp. 5348-5353). Kos, Greece 2 - 5 July, 2007.</p>
+                <p>Syafiie S, Tadeo F, Martinez E. 
+                    <a href="https://drive.google.com/file/d/182oYYNx3Ii2myVxptaSpOryLD8iqZlQr/preview" class="pdf-viewer" allow="autoplay">
+                    Learning to control pH processes at multiple time scales: performance assessment in a laboratory plant.</a> 
+                    <em>Chemical Product and Process Modeling.</em> 2007 Mar 5;2(1)</p>
+                <p>Syafiie S, Tadeo F, Martínez EC. 
+                    <a href="https://drive.google.com/file/d/1fJgAz07aU38deR98GihjrMCQuy4qEHSX/preview" class="pdf-viewer" allow="autoplay">
+                    Look up table for level control of two tanks system.</a> 
+                    <em>In 6th International Workshop on Practical Applications on Agents and Multiagent Systems</em> 2007 (pp. 191-200). 
+                    Universidad de Salamanca.</p>
+                <p>S. Syafiie, C. Fernandez, M. Garcia, A. Alonso and F. Tadeo, 
+                    Reinforcement Learning-Based Control for Batch Thermal Sterilization of Canned Foods, 
+                    III Simposio de Control Inteligente, Mallorca 6-8 June 2007.</p>
+                <p>Fuente MJ, Robles C, Casado O, Syafiie S, Tadeo F. 
+                    <a href="https://drive.google.com/file/d/1oxYMwhVfvuOqzbULSX6srQ_ubCSZCb1E/preview" class="pdf-viewer" allow="autoplay">
+                    Fuzzy control of a neutralization process.</a> 
+                    <em>Engineering Applications of Artificial Intelligence.</em> 2006 Dec 1;19(8):905-14.</p>
+                <p>Syafiie, S., Tadeo, F. and Martinez, E., 
+                    <a href="https://drive.google.com/file/d/19XJjejeaMWWhTW-vOS4hVgA2tbC1ICp1/preview" class="pdf-viewer" allow="autoplay">
+                    Model-Free Learning Control for processes with constrained incremental control.</a> 
+                    <em>In 2006 IEEE Conference on Computer Aided Control System Design, 
+                        2006 IEEE International Conference on Control Applications, 
+                        2006 IEEE International Symposium on Intelligent Control</em> Munich, Germany, October 2006, pp. 826-831.</p>
+                <p>Syafiie S, Tadeo F, Martínez EC. 
+                    <a href="https://drive.google.com/file/d/1oNxFb-oUj0O_gsTUfoqDVEU7akaPoQ6E/preview" class="pdf-viewer" allow="autoplay">
+                    Agents coordination to control oxidation process.</a> 
+                    <em> In Fifth International Workshop on Practical Applications of Agents and Multiagent Systems (IWPAAMS'06)</em>: October 19-20, 2006, EU Informática-Segovia (Spain), U. of Valladolid: proceedings 2006 (pp. 109-123). Universidad de Valladolid.</p>
+                <p>Syafiie S, Tadeo F, Martinez E. 
+                    <a href="https://drive.google.com/file/d/1M3uS5AcR2n-YbM5Omc2MoJpsF83A_PKw/preview" class="pdf-viewer" allow="autoplay">
+                    Macro-actions in model-free intelligent control with application to pH control.</a>
+                    <em>In Proceedings of the 44th IEEE Conference on Decision and Control</em> 2005 Dec 15 (pp. 2710-2715).</p>
+                <p>Syafiie S, Tadeo F, Martinez E.
+                    <a href="https://drive.google.com/file/d/14MzyXmhKFlYjacC0Vy6WGmgjxpBh9Ieq/preview" class="pdf-viewer" allow="autoplay"> 
+                    Model-free intelligent control using reinforcement learning and temporal abstraction-applied to ph control.</a> 
+                    <em>Proceedings IFAC World Congress</em>, July 2005, Prague, Czech.</p>
+                <p>Syafiie S, Tadeo F, Martínez EC. 
+                    <a href="https://drive.google.com/file/d/1Wv2RCZGC7GkxBOYuAZigf-xfYI-9_FUB/preview" class="pdf-viewer" allow="autoplay">
+                    Model-free intelligent control with gain adaptation applied to pH control.</a> 
+                    <em>In 4th International workshop on practical applications of agents and multiagent systems (IWPAAMS 2005) </em> 2005 (pp. 139-148)</p>
+                <p>S. Syafiie, F. Tadeo and E. Martinez, 
+                    Model-Free Intelligent Control of Neutralization Processes: Experiments on a Laboratory Plant,
+                    I Simposio Sobre Control Intelligente, 1st-3rd June 2005, Huelva, Spain</p>
+                <p>Syafiie S, Tadeo F, Martinez E. 
+                    <a href="https://drive.google.com/file/d/1MVGJ6HpVvFfneoNsLXCRYfIdpKGkXTIq/preview" class="pdf-viewer" allow="autoplay">
+                    Softmax and &epsilon;-greedy policies applied to process control.</a> 
+                    IFAC Workshop on Adaptive and Learning Systems(ALCOSP04), August 2004, Yokohama, Japan;37(12):729-34.</p>
+                <p>Syafiie S, Tadeo F, Martinez E.
+                    <a href="https://drive.google.com/file/d/1gQ8-UobVYJqrjl5wJZCNPa-0K3Tq0GI0/preview" class="pdf-viewer" allow="autoplay"> 
+                    Learning control application to nonlinear process control.</a> 
+                    <em>In Proceedings World Automation Congress</em>, 2004. 2004 Jun 28 (Vol. 16, pp. 260-265).</p>
+                <p>Syafiie S, Tadeo F, Martinez E. 
+                    <a href="https://drive.google.com/file/d/1OJRL7E-YvJecdNy_9bLQ9JWqSu11mB-n/preview" class="pdf-viewer" allow="autoplay">
+                    Learning control applied to ph plant.</a> 
+                    <em>In 7th International Symposium on Dynamics and Control of Process System (DYCOPS)</em>  July 2004, Boston, USA.</p>
+                <p>Syafiie Syam and Muhammad Sobron, 
+                    Automation: From Kitchen to Aircraft, Waspada Daily Newspaper (23 September 2003, in Bahasa Indonesia)</p>
+                <p>Annur Suhadi, Syafiie, and Marwan, 
+                    Stiff Problem Solution using Adams Method in Simulation of Packed Reactive Distillation Column, 
+                    <em>Proceeding of International Seminar in Numerical Analysis in Engineering</em>, 2000, Medan, Indonesia</p>
+                <p>Syafiie, Annur Suhadi, Syaubari, and Marwan, 
+                    Numerical Solution of Electrokinetics Mass Transfer Model for Hemoglobin Recovery in an Ionic PolyCarbonate Membrane, 
+                    Proceeding of International Seminar in Numerical Analysis in Engineering, 2000, Medan, Indonesia</p>
+                
+
             
         </div>
          <div class="class_teaching">
@@ -749,113 +980,93 @@
             <div class="rec-cards">
                 <div class="rec-card">
                     <h3>Process Control</h3>
-                    <p><strong>Visual Studio Code</strong> - Free, easy to start with, extensive documentation</p>
+                    <p>A process control class covers the fundamental principles and practices of automatically regulating 
+                        chemical industrial processes, focusing on maintaining variables like temperature, pressure, and flow at a set point. 
+                        Key topics include dynamic modeling (using mathematical tools like Laplace transforms), 
+                        designing and tuning controllers (especially PID control), analyzing process dynamics, 
+                        and understanding instrumentation like sensors and actuators (including control valves). 
+                        The goal is to ensure process safety, product quality, and efficiency, often using feedback control loops 
+                        to make real-time adjustments. </p>
                 </div>
                 <div class="rec-card">
                     <h3>Numerical Methods</h3>
-                    <p><strong>WebStorm</strong> - Powerful features, excellent for large projects and teams</p>
+                    <p>Numerical methods provide approximate solutions to complex mathematical problems in chemical engineering, 
+                        such as those encountered in process simulation, reaction kinetics, and transport phenomena. 
+                        Key applications include solving differential equations for reactor and heat exchanger design using well known methods 
+                        like the Finite Difference Method and Finite Element Method (FEM), 
+                        finding roots of linear and nonlinear system equations for equilibrium calculations with the Newton-Raphson method and  
+                        Descent Gradient method, and using integration techniques to solve ordinary differential equations for process dynamics 
+                        by using Runge-Kutta method. These methods are indispensable for process optimization and data analysis when analytical solutions are 
+                        impractical or impossible. </p>
                 </div>
                 <div class="rec-card">
                     <h3>Thermodynamics</h3>
-                    <p><strong>Sublime Text</strong> - Fast, minimal interface, great performance</p>
+                    <p>Thermodynamics for chemical engineering is the study of energy, work, and their relation to matter, 
+                        especially in the context of chemical reactions and physical changes. It is used to determine the 
+                        feasibility and direction of processes, perform energy balances, and design equipment like reactors 
+                        and separations units by applying the fundamental laws of thermodynamics, particularly the first and second laws. 
+                        Key applications include analyzing phase and chemical equilibria, optimizing process efficiency, and designing 
+                        systems for heating, cooling, and power generation. </p>
                 </div>
                 <div class="rec-card">
                     <h3>Separation Processes</h3>
-                    <p><strong>Visual Studio Code</strong> or <strong>Atom</strong> - Both completely free with great features</p>
+                    <p>Separation processes in chemical engineering are techniques used to divide mixtures into purer components 
+                        by exploiting differences in their physical or chemical properties, such as boiling point, density, or solubility. 
+                        Common methods include distillation (based on boiling point), filtration (separating solids from liquids), 
+                        membrane separation (using semipermeable membranes), extraction (using a solvent), and crystallization 
+                        (forming a solid from a solution). These processes are essential for purifying products, recovering valuable 
+                        materials, and managing waste in many industries.</p>
                 </div>
             </div>
         </div>
 
         
-        <div class="try-editor">
+        <div class="invited_lecturer">
             <h2>Invited Lecturer and Keynote Speaker</h2>
-            <p>Test your HTML, CSS, and JavaScript code with our simple online editor:</p>
-            
-            <div class="editor-container">
-                <div class="editor-panel">
-                    <div class="panel-header">
-                        <i class="fab fa-html5"></i> HTML
-                    </div>
-                    <textarea class="code-area" id="htmlCode" placeholder="Enter your HTML code here...">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Welcome to HTML Editor&lt;/h1&gt;
-    &lt;p&gt;This is a live preview of your HTML code.&lt;/p&gt;
-    &lt;button onclick="showMessage()"&gt;Click Me!&lt;/button&gt;
-    &lt;div id="output"&gt;&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
-                    
-                    <div class="panel-header" style="margin-top: 20px;">
-                        <i class="fab fa-css3-alt"></i> CSS
-                    </div>
-                    <textarea class="code-area" id="cssCode" placeholder="Enter your CSS code here...">body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 50px;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    color: white;
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-button {
-    padding: 12px 25px;
-    background: #ff9a00;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-button:hover {
-    background: #ff6a00;
-    transform: translateY(-2px);
-}</textarea>
-                    
-                    <div class="panel-header" style="margin-top: 20px;">
-                        <i class="fab fa-js-square"></i> JavaScript
-                    </div>
-                    <textarea class="code-area" id="jsCode" placeholder="Enter your JavaScript code here...">function showMessage() {
-    const output = document.getElementById('output');
-    output.innerHTML = '<h3>Hello! You clicked the button!</h3>';
-    output.innerHTML += '<p>Current time: ' + new Date().toLocaleTimeString() + '</p>';
-    
-    // Create a colorful effect
-    const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    output.style.color = randomColor;
-}</textarea>
-                </div>
-                
-                <div class="preview-container">
-                    <div class="panel-header">
-                        <i class="fas fa-eye"></i> Preview
-                    </div>
-                    <div class="preview-area" id="preview">
-                        Preview will appear here after running the code
-                    </div>
-                </div>
-            </div>
-            
-            <div class="controls">
-                <button class="run-btn" id="runBtn"><i class="fas fa-play"></i> Run Code</button>
-                <button class="clear-btn" id="clearBtn"><i class="fas fa-trash"></i> Clear All</button>
-            </div>
+            <p style="margin-bottom: 20px;">Dr. Syafiie has been invited for many lecturer and keynote speakers</p>
+        
+            <p>How to set up a low-cost research: publish articles in high impact journa, 31 July 2025,
+                politeknik Lhokseumawe, Aceh, Indonesia</p> 
+            <p><a href="https://drive.google.com/file/d/1BXTagfgNCU14Aeo39kotyfPCD1nTeJcu/preview" class="pdf-viewer" allow="autoplay">
+                Nonlinear Controller Design for Nonholonomic Mobile Robot of Multi-Agent Systems</a>, 6 May 2025, 
+                Faculty Engineering Hexathon 360, King Abdulaziz University</p>
+            <p><a href="https://drive.google.com/file/d/1rRjbX9in_bqhNCWrifcHn092stbtd1me/preview" class="pdf-viewer" allow="autoplay">
+                The Future of AI: Key Trends to Watch</a>, 
+                a keynote talk at International Seminar of The Indonesian Engineering Research Association,  
+                14 December 2024 </p>
+            <p><a href="https://drive.google.com/file/d/1uaT-nKAjX3vtRcnqWMWmZG-ptdrT2H6O/preview" class="pdf-viewer" allow="autoplay">
+                Writing Tips for High Impact Journal Article</a>, 
+                Pusat Penelitian dan Pengabdian Kepada Masyarakat,Politeknik Negeri Lhokseumawe, Aceh, Indonesia, 30-31 July 2024</p>
+            <p><a href="https://drive.google.com/file/d/1XSBNO9O1cCMLHimpqfvM-qddeg4fe4y-/preview" class="pdf-viewer" allow="autoplay">
+                Closed-Loop Systems for Biomedical Applications</a>, 
+                A Guest Lecturer talk at University Malikussaleh, Aceh, Indonesia, 27 June 2024</p>
+            <p><a href="https://drive.google.com/file/d/1PhSH1WFtkR_L8kxZKhHM9ZqUSAhKIyvG/preview" class="pdf-viewer" allow="autoplay">
+                Bionic Pancreas: Insulin delivery by using PID, LQG and H-infinity Controllers</a>, 
+                University of Indonesia, 6 March 2024</p>
+            <P><a href="https://drive.google.com/file/d/1oXd9FvX_R2RPytHXXCnVb2-_i6P8KWOY/preview" class="pdf-viewer" allow="autoplay">
+                Facing AI era</a>, 
+                International workshop and group discussion, 8 August 2023</P>
+            <p><a href="https://drive.google.com/file/d/1OFR0gSWCngkAEbEbvzmt3Ih2ncgjWbh3/preview" class="pdf-viewer" allow="autoplay">
+                Facing Artificial Intelligence era</a>, Keynote speaker at UICI-webminar,  27 July, 2023</p>
+           <p><a href="https://drive.google.com/file/d/1C5NGZemVX6HKWbc-OKib4liAwlzvqiy1/preview" class="pdf-viewer" allow="autoplay">
+                Positive Systems</a>, 
+                Visiting Professor at University of Indonesia, Jakarta, Indonesia, 19 March 2023</p>
+            <p><a href="https://drive.google.com/file/d/1KN0SVOiMr2I-8nBr9Shw2Qp5vBXW96eu/preview" class="pdf-viewer" allow="autoplay">
+                Artificial Intelligence is a key player in Industry Revolution 4.0</a>, 
+                Visiting professor at University Muhammadiah Sumatra Utara, Medan, Indonesia, 2 July 2022.</p>
+            <p><a href="https://drive.google.com/file/d/1Mcr4Rbw-5c5mnoYN72fGC6ddBkAlqqM1/preview" class="pdf-viewer" allow="autoplay">
+                Tips and tricks to publish in top journal</a>, 
+                Visiting Professor at University Bhakti Kencana, Bandung, Indonesia, 29 June 2022</p>
+            <p><a href="https://drive.google.com/file/d/101P42r-B-d-tc6QT0J8AhUkD3DOjcuW7/preview" class="pdf-viewer" allow="autoplay">
+                H-Infinity Controller Synthesis: LMI approaches</a>, A guest lecturer talk at University of Indonesia, 23 March 2022 </p>
+            <p><a href="https://drive.google.com/file/d/1LzqmkZWS9xKPeXjfRUl0cv-BdiCuGq-w/preview" class="pdf-viewer" allow="autoplay">
+                Writing a scientific Review Article</a>, a scientific writing workshop at University of Indonesia, 25 November 202</p>
+            <p><a href="https://drive.google.com/file/d/16Nhzwotnsu6-E_IkApp4Co9rLFuuV5MI/preview" class="pdf-viewer" allow="autoplay">
+                Modeling and Controller Tuning of Mixing Process</a>, 
+                A guest lecturer talk at Diponogoro University, 18 November 2021</p>
+            <p><a href="https://drive.google.com/file/d/1WAQv8O7S8u8V-YB1VL55VjqQW9DJH1YO/preview" class="pdf-viewer" allow="autoplay">
+                Readiness facing Artificial Intelligence era</a>, 
+                A keynote speaker at i-COSINE 2021, Politeknik Lhokseumawe, Indonesia, 13 November 2021</p>
         </div>
         
         <footer>
