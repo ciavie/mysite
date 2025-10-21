@@ -211,6 +211,11 @@
             margin-bottom: 20px;
             text-align: center;
         }
+        .class_teaching h3 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            text-align: center;
+        }
         
         .rec-cards {
             display: flex;
@@ -267,7 +272,7 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        
+                    
         table {
             width: 100%;
             border-collapse: collapse;
@@ -463,12 +468,100 @@
         </header>
     <div class="research">
         <h2>Process Control Class</h2>
-        <p style="margin-bottom: 20px;"><strong> This page is under construction</strong>
-            </p>
+        <h2><strong> This page is under construction</strong></h2>
+        <p>Process Dynamic and Control covers
+            <ol style="margin-left: 50px;">
+                <li>Introduction to Process Dynamics and Control</li>
+                <li>First Principle Mathematical Modeling</li>
+                <li>Dynamical Systems: Dynamical behaviour</li>
+                <li>Feedback</li>
+                <li>Basic PID Controller Design</li>
+                <li>Controller Structure</li>
+                <li>Frequency Domain Analysis</li>
+                <li>Systems with Multiple Input and Multiple Output</li>
+                <li>PID controller Design for MIMO</li>
+                <li>Discrete-time and sequence contro</li>
+                <li>Machine Learning for Control</li>
+            </ol>
+        </p>
+    </div>
+    <div class="class_teaching">
+        <h2>Introduction to Process Dynamics and Control</h2>
+
+    </div>   
+    <div class="class_teaching">
+        <h2>First Principle Mathematical Modeling</h2>
         
-    </div>     
-               
-       
+    </div>
+    <div class="class_teaching">
+        <h2>Dynamical Systems: Dynamical behaviour</h2>
+        
+    </div> <div class="class_teaching">
+        <h2>Feedback</h2>
+        
+    </div>
+    </div> <div class="class_teaching">
+        <h2>Basic PID Controller Design</h2>
+        <p>
+            \[
+            u(t)=k_c\left(e(t)+\frac{1}{t_i}\int_0^te(\tau)d\tau+t_d\frac{de(t)}{dt}\right)
+            \]
+            where
+            <ul style="margin-left: 40px;">
+                <li>\(k_c\) is proportional gain (reacts to current error)</li>
+                <li>\(t_i\) is integral time (removes steady-state error) - also represented as \(k_i=\frac{k_c}{t_i}\) integral gain</li>
+                <li>\(t_d\) is derivative time - also represented as \(k_d=k_ct_d\) derivative gain</li>
+            </ul>
+            Thus, it can be presented in Laplace transform as
+            \[\begin{align}
+
+            U(s)=&k_c\left(E(s)+\frac{E(s)}{t_is}+t_ds E(s)\right)\\
+            =&k_c\left(1+\frac{1}{t_i s}+t_ds\right)E(s)
+            \end{align}
+            \]
+        </p>
+        <h3>Ziegler-Nichols Tuning Method</h3>
+        <p>Take a first-order plus dead time (FOPDT) plant
+        \[G_p(s)=\frac{k_p}{\tau_ps+1}e^{-ls}\]
+        apply a unit step \(\Delta u=1\) and \(t=0\). The time-domain output (for \(t\ge l\)) is
+        \[y(t)=k_p\left(1-e^{-\frac{t-l}{\tau_p}}\right),\quad t\ge l\]
+        and \(y(t)=0 \) for \( t < l \). 
+        Let for example the plant has \(k_p=2, \tau_p=5 \)s and \( l=1 \)s, therefor \(t\ge 1\) is=
+        \[y(t)=2\left(1-e^{-\frac{t-1}{5}}\right) \]
+        The classical reaction-curve (open-loop) method uses the tangent at the beginning of the response. For the FOPDT model above:
+        <il>
+            <li>
+                Slope at \(t=l^+\) (immediately after delay) is
+                \[S=\left.\frac{dy}{dt}\right|_{t=l}=\frac{k_p}{\tau_p} \]
+            </li>
+            <li>
+                The tangent line through \(t=l, y=0\) with slop \(S\) is
+                \[y_{tan}(t)=S(t-l)\]
+            </li>
+            <li>
+                That tangent reaches the final value \(k_p\) at time \(t=l+\tau_p\) because \(S\tau_p=\frac{k_p}{\tau_p}\tau_p=k_p\). 
+                Thus the tangent intercepts give \(l\) and \(l+\tau_p\) directly, so visually/readable: 
+                \[\mbox{read off}\; l, \tau_p=t_{tangen\; at\; final}-l \]
+            </li>
+        </il>
+        For the example, it gives \(S=0.4\), tangen line \(y_{tan}​(t)=0.4(t-1) \). Set \(y_{tan}=k_p=2 \) to find he intercept: \(0.4(t-1)=
+        2\Rightarrow t-1=5\Rightarrow t=6 \) which equals \(l+\tau_p=1+5 \) So from the observed step response you would extract:
+        \[k_p=2,\tau_p=5 s,l=1 s \]
+        The classic Ziegler–Nichols open-loop (reaction-curve) PID tuning rules give controller parameters in terms of \(k_p,\tau_p\) and \(l\)
+        One convenient form uses
+        \[R\equiv\frac{k_p}{\tau_p} \]
+        (the initial slope). Common formula set (open-loop Z-N) for PID is:
+        \[k_c=\frac{1.2}{Rl},\quad t_i=2l,\quad t_d=0.5l \]
+        for the example, it gives
+        \[k_c=\frac{1.2}{0.4\times 1}=3,\quad t_i=2\times 1=2,\quad t_d=0.5\times 1=0.5 \]
+        Thus it gives
+        \[U(s)=3\left(1+\frac{1}{2s}+0.2s\right)E(s)\]
+        <h3>frequency</h3>
+    </div>
+    </div> <div class="class_teaching">
+        <h3>Controller Structure</h3>
+        
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -513,7 +606,20 @@
                 document.getElementById('infoBox').classList.toggle('expanded');
             }
         });
+        window.MathJax = {
+            tex: {
+            packages: ['base', 'ams', 'color', 'physics'], // add more if needed
+            macros: {
+          R: "\\mathbb{R}",   // Custom macro
+          bold: ["{\\bf #1}", 1]
+            }
+            },
+            loader: {
+            load: ['[tex]/ams', '[tex]/color', '[tex]/physics'] // tell MathJax to actually load these
+            }
+        };
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 
 </html>
