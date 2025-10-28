@@ -125,78 +125,6 @@
             color: white;
         }
         
-        .price-paid {
-            background: #e74c3c;
-            color: white;
-        }
-        
-        .price-freemium {
-            background: #3498db;
-            color: white;
-        }
-        
-        .feature-list {
-            list-style-type: none;
-            margin: 15px 0;
-        }
-        
-        .feature-list li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .feature-list i {
-            color: #2ecc71;
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .pros-cons {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .pros, .cons {
-            flex: 1;
-        }
-        
-        .pros h4, .cons h4 {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .pros h4 {
-            color: #2ecc71;
-        }
-        
-        .cons h4 {
-            color: #e74c3c;
-        }
-        
-        .pros ul, .cons ul {
-            list-style-type: none;
-        }
-        
-        .pros li, .cons li {
-            padding: 5px 0;
-            font-size: 0.9rem;
-        }
-        
-        .pros li:before {
-            content: "✓ ";
-            color: #2ecc71;
-            font-weight: bold;
-        }
-        
-        .cons li:before {
-            content: "✗ ";
-            color: #e74c3c;
-            font-weight: bold;
-        }
         
         .class_teaching {
             background: white;
@@ -212,14 +140,14 @@
             text-align: center;
         }
         
-        .rec-cards {
+        .modules {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
         }
         
-        .rec-card {
+        .module {
             background: #f8f9fa;
             border-radius: 10px;
             padding: 20px;
@@ -229,12 +157,12 @@
             border-top: 4px solid #3498db;
         }
         
-        .rec-card h3 {
+        .module h3 {
             margin-bottom: 10px;
             color: #2c3e50;
         }
         
-        .rec-card p {
+        .module p {
             font-size: 0.9rem;
             color: #666;
         }
@@ -267,33 +195,21 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .supervise {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            overflow-x: auto;
         }
         
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
+        .supervise h2 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            text-align: center;
         }
-        
-        th {
-            background: #f8f9fa;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        tr:hover {
-            background: #f8f9fa;
-        }
-        
-        .rating {
-            color: #ffc107;
-        }
-        
+       
         .invited_lecturer {
             background: white;
             border-radius: 15px;
@@ -308,69 +224,19 @@
             gap: 20px;
             margin-top: 20px;
         }
-        
-        .editor-panel {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .panel-header {
-            background: #34495e;
-            color: white;
-            padding: 12px 15px;
-            border-radius: 8px 8px 0 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .code-area {
-            width: 100%;
-            height: 200px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 0 0 8px 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            resize: vertical;
-            background: #f8f9fa;
-        }
-        
-        .preview-container {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .preview-area {
-            width: 100%;
-            height: 434px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: white;
-            overflow: auto;
-            padding: 15px;
-        }
-        
-        .controls {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .scroll-box {
-            /* width: 300px;          /* set your desired width */
-            /* height: 550px;         /* set your desired height */
-            /*border: 2px solid #333;*/
-            max-height: 60vh;   /* takes up to 60% of viewport height */
-            overflow-y: auto;
-            overflow-x: hidden;
+        .class_link {
+            display: grid;             /* grid container allows align-content */
+            height: 100px;             /* container height */
+            /*border: 1px solid #333;*/
             padding: 10px;
-            overflow-y: scroll;    /* enables vertical scrolling */
-            overflow-x: hidden;    /* hides horizontal scroll */
-            background: #fafafa;
+            align-content: end;        /* moves content to the bottom */
+            justify-content: center;   /* optional: center horizontally */
+            row-gap: 10px;             /* vertical space between <p> lines */
         }
-        .scroll-box.expanded {
-            max-height: 120vh;   /* expands dynamically */
+        .pdf-viewer {
+            width: 100%;
+            height: 100vh; /* full browser height */
+            border: none;
         }
         .img-left {
             float: left;
@@ -378,47 +244,7 @@
             width: 250px;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        }
-        .pdf-viewer {
-            width: 100%;
-            height: 100vh; /* full browser height */
-            border: none;
-        }
-        button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            background: #3498db;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        button:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-        
-        .run-btn {
-            background: #2ecc71;
-        }
-        
-        .run-btn:hover {
-            background: #27ae60;
-        }
-        
-        .clear-btn {
-            background: #e74c3c;
-        }
-        
-        .clear-btn:hover {
-            background: #c0392b;
-        }
-        
+        }       
         footer {
             text-align: center;
             color: white;
@@ -427,24 +253,6 @@
             opacity: 0.9;
         }
         
-        @media (max-width: 768px) {
-            .software-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .pros-cons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .lecture-container {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
@@ -582,7 +390,16 @@
                
         <div class="publication">
             <h2>My Publications</h2>
-            
+
+                <p> Noerhidajat Sjahro, R. Yunus, Marihot Nainggolan, A. Arifin, S. Syafiie, Zurina A. A., Umer Rashid, Vicknes R. Thang Yin Mee, 
+                    Effect of Different Pressures of Sterilization and Duration of Digestion on Oil Extraction in Palm Oil Milling Process, <span style="color: red;">submited</span> </p>
+                <p>Boon Chong Choo,Musab Abdul Razak, Mohd Zahirasri Mhd Tohir, Dayang Radiah Awang Biak, S. Syafiie, 
+                    AI-Driven Accident Prediction and Risk Assessment for Hydrogen Safety, <span style="color: red;">submited</span></p>
+                <p>Sisilia Sylviani, S. Syafiie, Intan Nurma Yulita, Performance and Sustainability Challenges in Networked Control Systems: A systematic literature 
+                    review, <span style="color: red;">submited</span></p>
+                <p> A. Subiantoro, S. Jones, N. Nasruddin, S. Syafiie, Comfortable Achievement in Complex, Multi-zone Environments of A HVAC-VRF System by 
+                    Multi-objective Function of Datadriven Neural Network Model Predictive Control, <span style="color: red;">submited</span> 
+                </p>
                 <p>Syafiie, S., & Tadeo, F. (2025). <a href= "https://drive.google.com/file/d/1tSjuRANxBdTZBizb8IhHUbpwzQ74BCnf/preview" class="pdf-viewer" allow="autoplay">
                     H&#8734 controller synthesis for multiple time-varying delays systems with 
                     application to double diabetes mellitus</a>. <em>International Journal of Engineering Systems Modelling and Simulation</em>, 16(5), 270-280</p>
@@ -977,8 +794,8 @@
         </div>
          <div class="class_teaching">
             <h2>Subject Teaching</h2>
-            <div class="rec-cards">
-                <div class="rec-card">
+            <div class="modules">
+                <div class="module">
                     <h3>Process Control</h3>
                     <p>A process control class covers the fundamental principles and practices of automatically regulating 
                         chemical industrial processes, focusing on maintaining variables like temperature, pressure, and flow at a set point. 
@@ -987,8 +804,11 @@
                         and understanding instrumentation like sensors and actuators (including control valves). 
                         The goal is to ensure process safety, product quality, and efficiency, often using feedback control loops 
                         to make real-time adjustments. </p>
+                    <div class="class_link">
+                        <strong><a href="ProcessControl.html" target="_self"> Process Control</a></strong>
+                   </div>
                 </div>
-                <div class="rec-card">
+                <div class="module">
                     <h3>Numerical Methods</h3>
                     <p>Numerical methods provide approximate solutions to complex mathematical problems in chemical engineering, 
                         such as those encountered in process simulation, reaction kinetics, and transport phenomena. 
@@ -998,8 +818,11 @@
                         Descent Gradient method, and using integration techniques to solve ordinary differential equations for process dynamics 
                         by using Runge-Kutta method. These methods are indispensable for process optimization and data analysis when analytical solutions are 
                         impractical or impossible. </p>
+                    <div class="class_link">
+                        <strong><a href="NumericalMethod.html" target="_self"> Numerical Method</a></strong>
+                   </div>
                 </div>
-                <div class="rec-card">
+                <div class="module">
                     <h3>Thermodynamics</h3>
                     <p>Thermodynamics for chemical engineering is the study of energy, work, and their relation to matter, 
                         especially in the context of chemical reactions and physical changes. It is used to determine the 
@@ -1007,8 +830,11 @@
                         and separations units by applying the fundamental laws of thermodynamics, particularly the first and second laws. 
                         Key applications include analyzing phase and chemical equilibria, optimizing process efficiency, and designing 
                         systems for heating, cooling, and power generation. </p>
+                    <div class="class_link">
+                        <strong><a href="Thermodynamics.html" target="_self"> Thermodynamics</a></strong>
+                   </div>
                 </div>
-                <div class="rec-card">
+                <div class="module">
                     <h3>Separation Processes</h3>
                     <p>Separation processes in chemical engineering are techniques used to divide mixtures into purer components 
                         by exploiting differences in their physical or chemical properties, such as boiling point, density, or solubility. 
@@ -1016,11 +842,46 @@
                         membrane separation (using semipermeable membranes), extraction (using a solvent), and crystallization 
                         (forming a solid from a solution). These processes are essential for purifying products, recovering valuable 
                         materials, and managing waste in many industries.</p>
+                    <div class="class_link">
+                        <strong><a href="Separation.html" target="_self"> Seperation Process</a></strong>
+                   </div>
                 </div>
             </div>
         </div>
+        <div class="supervise">
+            <h2 style="text-align: center;">Supervise Graduate Students </h2>
+            <p>Choo Boon Chong, <a href="https://drive.google.com/file/d/16DQN9mxmkgUa20Mwc_sMldnsyCydIYUv/preview" class="pdf-viewer" allow="autoplay">
+                Application of Machine Learning in Risk Analysis for Industrial Accidents</a>, 2025</p>
+            <p>Nabeel Hameed Mohammed Al-Farsi <a href="https://drive.google.com/file/d/1PhTgqtxL7e5azq0k-Fffd-t98C_6cqfI/preview" class="pdf-viewer" allow="autoplay">
+                Reliability-Centered Maintenance Application for The Development of Maintenance Strategy for a Chemical Plant</a>, 2024
+            </p>
+            <p>Ayman William Hermansson <a href="https://drive.google.com/file/d/1qlwnDALSvgj_cgEvVLkdGhGklWLzDMTm/preview" class="pdf-viewer" allow="autoplay">
+                Robust Offsett-Free Control of Nonlinear Systems using Model Predictive Control and Integral Action</a>
+            </p>
+            <p>Chang Jing Jing, <a href="https://drive.google.com/file/d/1qNLBsLdMQlqo62TzDNla4TASYcrpFajp/preview" class="pdf-viewer" allow="autoplay">
+                Sensitivity Analysis and Multi-Model Generalised Predictive Control of Uncertain intravenous General Anesthesia</a>
+            </p>
+            <p>Thitima na Songkha, Risk Assessment and Safety Management of Gas Stations in Southern Thailand
+            </p>
+            <p>Saleem Ethaib, Glucose and Xylose hydrolysis by Microwave Pretreatment</p>
+            <p>Maryam Valizadeh, Development of Mathematical Model for Optimal Planning of Biofuel Supply Chain</p>
+            <p>Mohsen Safakar, Temperature and Wind Velocity Effect on Chlorine Dispersion in an Indoor Storage System Using CFD </p>
+            <p>Syahrul Fitri Bin Md Yusuf, Reliability Study of Subsea Isolation Valve System</p>
+            <p>Muhammad Muzzammil bin Abdullah, Inspection and Testing of Local Exhaust Ventilation System at Welding Workshop</p>
+            <p>Golnal Zarinov, Hazard Evaluation and Safety Knowledge, Attitude and Practice in Physic/Chemistry Laboratory at Mahsa University</p>
+            <p>Alicia Rani Francis, Consequence Model of Contamination of Ammonia in Sewage Waste Water Effluent</p>
+            <p>Nina Fatma Binti Ali, Occupational Safety and Health Assessment in Palm Oil Mill Boiler</p>
+            <p>Mohd Syahiran Bin Sidek, Risk Management Study in The Installation of Offshore Structure Using Float-Over Method</p>
+            <p>Ahmad Fauzi Sagap, Reliability and Maintainability Study of Liquified Natural Gas Carrier </p>
+            <p>Petrus, Julini Anak Goel, Printed Circuit Board CNC Tool Failure Analysis</p>
+            <p>Amirreza Moghada Haghani, Fuzzy Method Based Analytical Study and Numerical Algorithm to Computer Reliability and Availability of Steam Cogeneration Unit</p>
+            <p>Nurhidayat, Modeling and Simulation of Oil Palm Fruit Digestion Process</p>
+            <p>Ramin Khezri, Fuzzy Control of CSTR in Biodiesel Production</p>
+            <p>Hamid Pourzolfaghar, H2S Adsorption from Biogas using Natural Clinoptilolite</p>
+            <p>Cosmin Copot, Automatic Carpet Wear Classification based on Support Vector Machine</p>
+        </div>
 
-        
+
         <div class="invited_lecturer">
             <h2 style="text-align: center;">Invited Lecturer and Keynote Speaker</h2>
             <p style="margin-bottom: 20px;">Dr. Syafiie has been invited for many lecturer and keynote speakers</p>
@@ -1122,51 +983,6 @@
             <p>Professor Dr. Ir. Syafiie Syamaun, ST. DEA | A personal website to share the knowledge</p>
         </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Editor functionality
-            const htmlCode = document.getElementById('htmlCode');
-            const cssCode = document.getElementById('cssCode');
-            const jsCode = document.getElementById('jsCode');
-            const preview = document.getElementById('preview');
-            const runBtn = document.getElementById('runBtn');
-            const clearBtn = document.getElementById('clearBtn');
-            
-            // Run the code on button click
-            runBtn.addEventListener('click', updatePreview);
-            
-            // Clear all editors
-            clearBtn.addEventListener('click', () => {
-                if (confirm('Are you sure you want to clear all code?')) {
-                    htmlCode.value = '';
-                    cssCode.value = '';
-                    jsCode.value = '';
-                    preview.innerHTML = 'Preview will appear here after running the code';
-                }
-            });
-            
-            function updatePreview() {
-                const html = htmlCode.value;
-                const css = cssCode.value;
-                const js = jsCode.value;
-                
-                // Extract body content from HTML
-                const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
-                const bodyContent = bodyMatch ? bodyMatch[1] : html;
-                
-                // Create a preview with the code
-                preview.innerHTML = `
-                    <style>${css}</style>
-                    ${bodyContent}
-                    <script>${js}<\/script>
-                `;
-            }
-            function toggleBox() {
-                document.getElementById('infoBox').classList.toggle('expanded');
-            }
-        });
-    </script>
 </body>
 
 </html>

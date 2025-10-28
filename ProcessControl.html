@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dr. Ir. Syafiie Syamaun, ST. DEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=15uT2YVxcygUoCfi5htf3aXxNcrK4os77" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;  
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+      
+        
+        .class_teaching {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+        
+        .class_teaching h2 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .class_teaching h3 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .subject {
+            background: rgb(171, 211, 223);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            overflow-x: auto;
+        }
+        
+        .subject h2 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+               
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            opacity: 0.9;
+        }
+        canvas { background: #fff; border: 1px solid #ccc; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Syafiie Syamaun</h1>
+            <p class="subtitle">Professor in Process Control</p>
+        </header>
+    <div class="subject">
+        <h2>Process Control Class</h2>
+        <h2><strong> This page is under construction</strong></h2>
+        <p>Process Dynamic and Control covers
+            <ol style="margin-left: 50px;">
+                <li>Introduction to Process Dynamics and Control</li>
+                <li>First Principle Mathematical Modeling</li>
+                <li>Dynamical Systems: Dynamical behaviour</li>
+                <li>Feedback</li>
+                <li>Basic PID Controller Design</li>
+                <li>Controller Structure</li>
+                <li>Frequency Domain Analysis</li>
+                <li>Systems with Multiple Input and Multiple Output</li>
+                <li>PID controller Design for MIMO</li>
+                <li>Discrete-time and sequence contro</li>
+                <li>Machine Learning for Control</li>
+            </ol>
+        </p>
+    </div>
+    <div class="class_teaching">
+        <h2>Introduction to Process Dynamics and Control</h2>
+
+    </div>   
+    <div class="class_teaching">
+        <h2>First Principle Mathematical Modeling</h2>
+        <p>The objectives are to:
+        <ul style="margin-left: 50px;">
+            <li>be able to analyze real dynamic phenomena and dynamic systems</li>
+            <li>develop mathematical modeling of given problem</li>
+            <li>validate the developed mathematical model to the real-world dynamical systems</li>
+            <li>characterize a process dynamic behaviour, which is help in both process design and control design</li>
+        </ul>
+        Before we begin discussion on dynamic modeling, we first state the deffinition of "mathematical model" and "dynamic". In the year 1974, Eykhoff had defined that a mathematical model is a representation
+        of the essential aspect of existing system (or a system to be constructed) which represent knowledge of that system in a usable form.
+        </p>
+        <p>
+        In its simplest form, a mathematical model is nothing more than equations that relate the values of variables, it can be decomposed
+        into four basic components: input variables, output variables, parameters, and operators. Output variables are the unknown quantities
+        that the model is designed to deduce from values of the known inputs. The operators in the model define the mathematical manipulations
+        required to compute the value of the output from the inputs and parameters. 
+        </p>
+        <p>The dynamic is (<em> Of or relating to energy or to objects in motion, <a href="https://www.merriam-webster.com/">Merriem Webster</a> Dictionary</em>) the time varying behavior of processes. 
+            Most of chemical process behaviors  are dynamically continuous changes respecting to inputs. The process in steady state change 
+            indicates where the process is going and the dynamic characteristic of the process indicates what dynamic path it will take. 
+            The dynamic of the process is usually represented by difference, differential, parametric, or state space models. 
+            In the following, these dynamical models are discussed. 
+        </p>
+        <p>A dynamic mathematical model can be represented in difference and differential equations. 
+            Usually, the model developed based on first principle is differential equations, they can be lumped or distributed equations. 
+            A model developed from a given input-output data is difference equations, which are usually represented in parametric model.
+        </p>
+        <h3>Difference equation</h3>
+        <p>Suppose there is defined a sequence of points, perhaps representing discrete equally space time point, indexed by \(k\). 
+        Suppose also that there is a value \(y(k)\) (a real number) associated with each of these point. 
+        A <em> difference equation</em> is an equation relating the value \(y(k)\), at point \(k\), to value at other (usually neighboring) points. A simple example is 
+            \[y(k+1)=ay(k) \qquad k=0,1,2,\dots \]
+        Difference equation may, however, be much more complicated than this.
+        A solution of a difference equation is a function \(y(k)\) that reduces the equation to an identity. 
+        For example, corresponding to the first-order equation above, 
+        the function \(y(k)=a^k\) reduces the equation to an identity, since \(y(k+1)=a^{k+1}=aa^k=ay(k)\).
+        <p>Usually, the first order difference equation is represented to take into account the bias 
+            of the function, which is known as the error compensate of the function. The equation is 
+            \[y(k+1)=ay(k)+b\]
+        linear, has a constant \(a\), and a constant forcing term \(b\). The solution of the simple representation of the identity 
+        equation is by finding the simplest relation and correlation of the value in the neighborhood. 
+        From the equation above, the value of \(y\) at an initial point \(k_0\), say \(k_0=0\) and specify \(y(0)=y_0\). 
+        The following corresponding values are depend on the initial value, which in sequence is represented as
+        \[
+        \begin{align} 
+        y(k_0=0)=&y_0\\
+        y(k_1=k_0+1=1)=&ay(0)+b=ay_0+b\\
+        y(k_2=k_1+1=1+1=2)=&a(y_1)+b=a(ay_0+b)+b=a^2y_0+ab+b\\
+        \vdots\\
+        y(k_n)=&a^ny_0+(a^{n-1}+a^{n-2}+\dots+a+1)b
+        \end{align}
+         \]
+         The first term of the right hand side of the equation depends on the initial value, \(y_0\). 
+         However, the second term corrects the sequence of errors. For \(a=1\), the expression reduces simply to 
+         \[y(k_n)=y_0+nb.\]
+         However, in the real facing problem, the weighted parameter is not necessarily equal to 1. Therefore, if  \(a\neq1\), 
+         the expression can be somewhat simplified by collapsing the geometric series using
+         \[
+         1+a+a^2+\dots+a^{n-1}=\frac{1-a^n}{1-a} \]
+        Therefore, the desired solution in closed-form is
+        \[
+        y(k_n)=\left\{ \begin{array}{ll}
+ y_0+nb, & a=1 \\
+  a^ny_0+\frac{1-a^n}{1-a}b, & a\neq1
+       \end{array} \right.
+         \]
+        </p>
+        <h3>Differential equation</h3>
+        <p>Suppose there is an interval, \(t_0\leq t\leq t_1\), representing an interval of continuous time. 
+            Suppose also that there is a value \(y(t)\) associated with each point \(t\) in that interval. 
+            Then \(y(t)\) is a function defined on the interval. A <em> differential equation</em> is an equation 
+            connecting such a function and some of its derivatives. A simple example is the equation
+        \[\frac{dy}{dt}=ay,\quad y(0)=y_0\]
+        which is an autonomous system. To drive the system is by introducing a force variable \(b\) such as 
+        \[\frac{dy}{dt}=ay+b,\quad y(0)=y_0\]
+        The solution for the autonomos system is 
+        \[y(t)=y_0e^{at} \]
+        and solution for non-autonomous system is given 
+        \[
+        y(t)=-\frac{b}{a}+\left(y_0+\frac{b}{a}\right)e^{at}
+        \]
+        </p>
+        <h3>Phenomena Law</h3>
+        <canvas id="canvas0" width="600" height="300"></canvas>
+        <!-- \[\ce{A + B2 -> P} \] -->
+        <p>In general the system can be modeled by arranging that the system is influenced by a receiving 
+        and releasing material or energy and/or system's characteristics. 
+        This can be a chemical reaction or something else.  
+        \[\begin{bmatrix}
+            \text{Rate of} \\ \text{Accumulation} 
+        \end{bmatrix}=\begin{bmatrix}
+            \text{Rate of Entering} \\ \text{the systems} 
+        \end{bmatrix}-\begin{bmatrix}
+            \text{Rate of Leaving} \\ \text{the systems} 
+        \end{bmatrix}+\begin{bmatrix}
+            \text{Rate of Generation } \\ \text{or Consumption within system} 
+        \end{bmatrix}\]
+       
+        </p>
+    </div>
+    <div class="class_teaching">
+        <h2>Laplace Transformation</h2>
+        
+    </div> 
+    <div class="class_teaching">
+        <h2>Dynamical Systems: Dynamical behaviour</h2>
+        
+    </div> <div class="class_teaching">
+        <h2>Feedback</h2>
+        <canvas id="feedbackCanvas" width="700" height="450"></canvas> <p>Here come text</p>
+    </div>
+    </div> <div class="class_teaching">
+        <h2>Basic PID Controller Design</h2>
+        <p>
+            \[
+            u(t)=k_c\left(e(t)+\frac{1}{t_i}\int_0^te(\tau)d\tau+t_d\frac{de(t)}{dt}\right)
+            \]
+            where
+            <ul style="margin-left: 40px;">
+                <li>\(k_c\) is proportional gain (reacts to current error)</li>
+                <li>\(t_i\) is integral time (removes steady-state error) - also represented as \(k_i=\frac{k_c}{t_i}\) integral gain</li>
+                <li>\(t_d\) is derivative time - also represented as \(k_d=k_ct_d\) derivative gain</li>
+            </ul>
+            Thus, it can be presented in Laplace transform as
+            \[\begin{align}
+
+            U(s)=&k_c\left(E(s)+\frac{E(s)}{t_is}+t_ds E(s)\right)\\
+            =&k_c\left(1+\frac{1}{t_i s}+t_ds\right)E(s)
+            \end{align}
+            \]
+        </p>
+        <h3>Ziegler-Nichols Tuning Method</h3>
+        <p>Take a first-order plus dead time (FOPDT) plant
+        \[G_p(s)=\frac{k_p}{\tau_ps+1}e^{-ls}\]
+        apply a unit step \(\Delta u=1\) and \(t=0\). The time-domain output (for \(t\ge l\)) is
+        \[y(t)=k_p\left(1-e^{-\frac{t-l}{\tau_p}}\right),\quad t\ge l\]
+        and \(y(t)=0 \) for \( t < l \). 
+        Let for example the plant has \(k_p=2, \tau_p=5 \)s and \( l=1 \)s, therefor \(t\ge 1\) is=
+        \[y(t)=2\left(1-e^{-\frac{t-1}{5}}\right) \]
+        The classical reaction-curve (open-loop) method uses the tangent at the beginning of the response. For the FOPDT model above:
+        <ol style="margin-left: 40px;">
+            <li>
+                Slope at \(t=l^+\) (immediately after delay) is
+                \[S=\left.\frac{dy}{dt}\right|_{t=l}=\frac{k_p}{\tau_p} \]
+            </li>
+            <li>
+                The tangent line through \(t=l, y=0\) with slop \(S\) is
+                \[y_{tan}(t)=S(t-l)\]
+            </li>
+            <li>
+                That tangent reaches the final value \(k_p\) at time \(t=l+\tau_p\) because \(S\tau_p=\frac{k_p}{\tau_p}\tau_p=k_p\). 
+                Thus the tangent intercepts give \(l\) and \(l+\tau_p\) directly, so visually/readable: 
+                \[\mbox{read off}\; l, \tau_p=t_{tangen\; at\; final}-l \]
+            </li>
+        </ol>
+        For the example, it gives \(S=0.4\), tangen line \(y_{tan}​(t)=0.4(t-1) \). Set \(y_{tan}=k_p=2 \) to find he intercept: \(0.4(t-1)=
+        2\Rightarrow t-1=5\Rightarrow t=6 \) which equals \(l+\tau_p=1+5 \) So from the observed step response you would extract:
+        \[k_p=2,\tau_p=5 s,l=1 s \]
+        The classic Ziegler–Nichols open-loop (reaction-curve) PID tuning rules give controller parameters in terms of \(k_p,\tau_p\) and \(l\)
+        One convenient form uses
+        \[R\equiv\frac{k_p}{\tau_p} \]
+        (the initial slope). Common formula set (open-loop Z-N) for PID is:
+        \[k_c=\frac{1.2}{Rl},\quad t_i=2l,\quad t_d=0.5l \]
+        for the example, it gives
+        \[k_c=\frac{1.2}{0.4\times 1}=3,\quad t_i=2\times 1=2,\quad t_d=0.5\times 1=0.5 \]
+        Thus it gives
+        \[U(s)=3\left(1+\frac{1}{2s}+0.5s\right)E(s)\]
+        <h3>frequency</h3>
+    </div>
+    </div> <div class="class_teaching">
+        <h3>Controller Structure</h3>
+        
+    </div>
+        <footer>
+            <p>Professor Dr. Ir. Syafiie Syamaun, ST. DEA | A personal website to share the knowledge</p>
+        </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        const c = document.getElementById('feedbackCanvas');
+        const ctx = c.getContext('2d');
+        const diagramWidth = 650, diagramHeight = 150;
+        const centerOffsetX = (c.width - diagramWidth) / 2;
+        const centerOffsetY = (c.height - diagramHeight) / 20000;
+        ctx.translate(centerOffsetX, centerOffsetY);
+
+        const sumX = 120, sumY = 200;
+        const ctrlX = 200, ctrlY = 150, ctrlW = 120, ctrlH = 100;
+        const plantX = 400, plantY = 150, plantW = 120, plantH = 100;
+        const outX = 600, fbY = 320;
+
+        function drawArrow(x1, y1, x2, y2) {
+            const headlen = 10, dx = x2 - x1, dy = y2 - y1, angle = Math.atan2(dy, dx);
+            ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - headlen * Math.cos(angle - Math.PI/6), y2 - headlen * Math.sin(angle - Math.PI/6));
+            ctx.lineTo(x2 - headlen * Math.cos(angle + Math.PI/6), y2 - headlen * Math.sin(angle + Math.PI/6));
+            ctx.closePath(); ctx.fill();
+        }
+
+        function drawBlock(x, y, w, h, label) {
+            ctx.beginPath(); ctx.fillStyle = '#f0f8ff'; ctx.strokeStyle = '#000';
+            ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = '#000'; ctx.font = '16px Arial';
+            ctx.fillText(label, x + w/2 - ctx.measureText(label).width/2, y + h/2 + 5);
+        }
+
+        function drawDiagram() {
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.lineWidth = 2; ctx.strokeStyle = '#000'; ctx.fillStyle = '#000';
+
+            ctx.beginPath(); ctx.arc(sumX, sumY, 20, 0, 2*Math.PI); ctx.stroke();
+            ctx.font = '18px Arial'; ctx.fillText('+', sumX - 12, sumY + 4); ctx.fillText('–', sumX - 6, sumY + 18);
+            drawArrow(40, sumY, sumX - 20, sumY); ctx.fillText('r(t)', 20, sumY - 10);
+            drawArrow(sumX + 20, sumY, ctrlX, sumY); ctx.fillText('e(t)', sumX + 25, sumY - 10);
+            drawBlock(ctrlX, ctrlY, ctrlW, ctrlH, 'Controller');
+            drawArrow(ctrlX + ctrlW, sumY, plantX, sumY); ctx.fillText('u(t)', ctrlX + ctrlW + 20, sumY - 10);
+            drawBlock(plantX, plantY, plantW, plantH, 'Plant');
+            drawArrow(plantX + plantW, sumY, outX, sumY); ctx.fillText('y(t)', outX + 10, sumY - 10);
+            drawArrow(outX, sumY, outX, fbY); drawArrow(outX, fbY, sumX, fbY); drawArrow(sumX, fbY, sumX, sumY + 20);
+            ctx.fillText('Feedback', outX - 150, fbY - 10);
+        }
+
+        const path = [
+            {x1:40,y1:sumY,x2:sumX-20,y2:sumY}, {x1:sumX+20,y1:sumY,x2:ctrlX,y2:sumY},
+            {x1:ctrlX+ctrlW,y1:sumY,x2:plantX,y2:sumY}, {x1:plantX+plantW,y1:sumY,x2:outX,y2:sumY},
+            {x1:outX,y1:sumY,x2:outX,y2:fbY}, {x1:outX,y1:fbY,x2:sumX,y2:fbY}, {x1:sumX,y1:fbY,x2:sumX,y2:sumY+20}
+        ];
+
+        let t = 0; const speed = 1;
+        function animate() {
+            drawDiagram();
+            let remaining = t;
+            for (let seg of path) {
+                const dx = seg.x2 - seg.x1, dy = seg.y2 - seg.y1, dist = Math.hypot(dx, dy);
+            if (remaining <= dist) {
+                const ratio = remaining / dist, x = seg.x1 + dx * ratio, y = seg.y1 + dy * ratio;
+                ctx.beginPath(); ctx.fillStyle = 'red'; ctx.arc(x, y, 6, 0, 2*Math.PI); ctx.fill(); break;
+            } else remaining -= dist;
+            }
+                const total = path.reduce((s, seg) => s + Math.hypot(seg.x2 - seg.x1, seg.y2 - seg.y1), 0);
+                t += speed; if (t > total) t = 0; requestAnimationFrame(animate);
+            }
+        function drawArrow0(ctx, x1, y1, x2, y2){
+            const head = 10;
+            const angle = Math.atan2(y2-y1, x2-x1);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.lineTo(x2 - head*Math.cos(angle-Math.PI/6), y2 - head*Math.sin(angle-Math.PI/6));
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - head*Math.cos(angle+Math.PI/6), y2 - head*Math.sin(angle+Math.PI/6));
+            ctx.stroke();
+            }
+
+        drawDiagram(); animate();
+        // 3️⃣ Cascaded system
+        const c0 = document.getElementById('canvas0');
+        const ctx0 = c0.getContext('2d');
+        ctx0.lineWidth = 2;
+        ctx0.font = '16px sans-serif';
+        ctx0.fillText('u(t)',180,165);
+        drawArrow0(ctx0,175,150,240,150);
+        ctx0.strokeRect(240,130,100,40);
+        ctx0.fillText('Process',255,155);
+        drawArrow0(ctx0,340,150,400,150);
+        ctx0.fillText('y(t)',370,165);
+  </script>
+</body>
+
+</html>
