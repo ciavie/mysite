@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Transfer Function Response (Canvas)</title>
+  <style>
+    body {
+      font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial;
+      display: flex;
+      gap: 18px;
+      padding: 18px;
+      background: #f8f9fa;
+    }
+    .panel {
+      width: 320px;
+      background: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    input, button, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 12px;
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    canvas {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .hint {
+      font-size: 12px;
+      color: #555;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h3>Transfer Function G(s) = N(s)/D(s)</h3>
+
+    <label>Numerator coefficients (highest power → constant)
+      <input id="num" value="1">
+    </label>
+
+    <label>Denominator coefficients (highest power → constant)
+      <input id="den" value="1 3 2">
+    </label>
+
+    <label>Simulation duration (s)
+      <input id="duration" type="number" value="10" step="0.1">
+    </label>
+
+    <label>Time step (s)
+      <input id="dt" type="number" value="0.01" step="0.001">
+    </label>
+
+    <label>Plot type
+      <select id="plotType">
+        <option value="step">Step response</option>
+        <option value="impulse">Impulse response</option>
+      </select>
+    </label>
+
+    <button id="sim">Simulate & Plot</button>
+
+    <div class="hint">Example denominator for s²+3s+2 → “1 3 2”</div>
+    <div class="hint">Example numerator for s+1 → “1 1”</div>
+  </div>
+
+  <div>
+    <canvas id="respCanvas" width="900" height="500"></canvas>
+  </div>
+
+  <script>
+  function parseCoeffs(str) {
+    return str.replace(/,/g, ' ').trim().split(/\s+/).filter(Boolean).map(Number);
+  }
+
+  function padLeft(arr, len) {
+    return new Array(len - arr.length).fill(0).concat(arr);
+  }
+
+  function polyDiv(num, den) {
+    num = num.slice();
+    const q = [];
+    while (num.length >= den.length) {
+      const leadCoef = num[0] / den[0];
+      const shift = num.length - den.length;
+      const sub = den.map(c => c * leadCoef);
+      const padded = sub.concat(new Array(shift).fill(0));
+      q.push(leadCoef);
+      num = num.map((x, i) => x - (padded[i] || 0));
+      while (num.length && Math.abs(num[0]) < 1e-12) num.shift();
+    }
+    return { quotient: q, remainder: num.length ? num : [0] };
+  }
+
+  function tfToStateSpace(num, den) {
+    if (den[0] === 0) throw "Denominator leading coefficient cannot be zero";
+    num = num.map(v => v / den[0]);
+    den = den.map(v => v / den[0]);
+    if (num.length >= den.length) {
+      const div = polyDiv(num, den);
+      num = div.remainder;
+    }
+    const n = den.length - 1;
+    num = padLeft(num, n);
+    const a = den.slice(1);
+    const A = Array.from({ length: n }, () => Array(n).fill(0));
+    for (let i = 0; i < n - 1; i++) A[i][i + 1] = 1;
+    for (let j = 0; j < n; j++) A[n - 1][j] = -a[j];
+    const B = new Array(n).fill(0);
+    B[n - 1] = 1;
+    const C = num.slice();
+    const D = 0;
+    return { A, B, C, D };
+  }
+
+  function mvMul(M, v) {
+    return M.map(r => r.reduce((s, x, i) => s + x * v[i], 0));
+  }
+
+  function integrateState(A, B, C, D, uFn, x0, dt, steps) {
+    const n = x0.length;
+    let x = x0.slice();
+    const data = [];
+    for (let k = 0; k < steps; k++) {
+      const t = k * dt;
+      const u = uFn(t);
+      const f = x => mvMul(A, x).map((val, i) => val + B[i] * u);
+      const k1 = f(x);
+      const k2 = f(x.map((xi, i) => xi + dt * k1[i] / 2));
+      const k3 = f(x.map((xi, i) => xi + dt * k2[i] / 2));
+      const k4 = f(x.map((xi, i) => xi + dt * k3[i]));
+      x = x.map((xi, i) => xi + (dt / 6) * (k1[i] + 2 * k2[i] + 2 * k3[i] + k4[i]));
+      const y = C.reduce((s, ci, i) => s + ci * x[i], 0) + D * u;
+      data.push({ t, y });
+    }
+    return data;
+  }
+
+  function drawPlot(canvas, data) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const pad = 50;
+    const w = canvas.width, h = canvas.height;
+    const tmin = 0, tmax = data[data.length - 1].t;
+    const yvals = data.map(p => p.y);
+    let ymin = Math.min(...yvals), ymax = Math.max(...yvals);
+    if (ymin === ymax) { ymin -= 1; ymax += 1; }
+
+    const x0 = pad, x1 = w - pad, y0 = h - pad;
+
+    ctx.strokeStyle = "#000";
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x1, y0);
+    ctx.moveTo(x0, pad);
+    ctx.lineTo(x0, y0);
+    ctx.stroke();
+
+    const xTicks = 10;
+    const yTicks = 6;
+
+    ctx.font = "12px monospace";
+    ctx.fillStyle = "#333";
+
+    for (let i = 0; i <= xTicks; i++) {
+      const tt = tmin + (tmax - tmin) * i / xTicks;
+      const x = x0 + (x1 - x0) * (tt - tmin) / (tmax - tmin);
+      ctx.strokeStyle = "#ddd";
+      ctx.beginPath();
+      ctx.moveTo(x, pad);
+      ctx.lineTo(x, y0);
+      ctx.stroke();
+      ctx.fillText(tt.toFixed(1), x - 10, y0 + 18);
+    }
+
+    for (let i = 0; i <= yTicks; i++) {
+      const yy = ymin + (ymax - ymin) * i / yTicks;
+      const y = y0 - (y0 - pad) * (yy - ymin) / (ymax - ymin);
+      ctx.strokeStyle = "#ddd";
+      ctx.beginPath();
+      ctx.moveTo(x0, y);
+      ctx.lineTo(x1, y);
+      ctx.stroke();
+      ctx.fillText(yy.toFixed(2), 8, y + 4);
+    }
+
+    ctx.beginPath();
+    ctx.strokeStyle = "#0077cc";
+    ctx.lineWidth = 2;
+    for (let i = 0; i < data.length; i++) {
+      const x = x0 + (x1 - x0) * (data[i].t - tmin) / (tmax - tmin);
+      const y = y0 - (y0 - pad) * (data[i].y - ymin) / (ymax - ymin);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    ctx.fillStyle = "#000";
+    ctx.fillText("Time (s)", w / 2 - 30, h - 10);
+    ctx.save();
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText("Response", -h / 2 - 40, 15);
+    ctx.restore();
+  }
+
+  document.getElementById("sim").addEventListener("click", () => {
+    try {
+      const num = parseCoeffs(document.getElementById("num").value);
+      const den = parseCoeffs(document.getElementById("den").value);
+      const duration = parseFloat(document.getElementById("duration").value);
+      const dt = parseFloat(document.getElementById("dt").value);
+      const plotType = document.getElementById("plotType").value;
+
+      const { A, B, C, D } = tfToStateSpace(num, den);
+      const steps = Math.floor(duration / dt);
+      const uFn = plotType === "step" ? (t => 1) : (t => (t < dt ? 1 / dt : 0));
+      const data = integrateState(A, B, C, D, uFn, new Array(A.length).fill(0), dt, steps);
+      drawPlot(document.getElementById("respCanvas"), data);
+    } catch (e) {
+      alert("Error: " + e);
+    }
+  });
+
+  window.onload = () => document.getElementById("sim").click();
+  </script>
+</body>
+</html>

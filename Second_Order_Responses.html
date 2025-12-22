@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>2nd-Order System Responses</title>
+<style>
+  :root{--bg:#071428;--card:#0b1a2b;--accent:#6be7ff}
+  html,body{height:100%;margin:0;background:var(--bg);color:#e6f7ff;font-family:system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:1100px;margin:20px auto;padding:18px}
+  .top{display:flex;gap:16px;align-items:center}
+  .card{background:linear-gradient(180deg, rgba(119, 40, 40, 0.02), rgba(255,255,255,0.01));border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+  .controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;min-width:320px;margin-left:auto}
+  label{font-size:13px;color:#bfe;display:block}
+  input[type=range]{width:100%}
+  .row{display:flex;gap:10px;align-items:center}
+  .canvasRow{display:flex;gap:18px;margin-top:14px}
+  canvas{background:linear-gradient(180deg,#021428,#000814);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+  .small{font-size:12px;color:#bcd;margin-top:8px}
+  button{background:var(--accent);border:none;padding:8px 10px;border-radius:8px;cursor:pointer;color:#002}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h2 style="margin:0 0 6px">Second-order system responses</h2>
+      <div class="small">Transfer: \(G(s)=\frac{K\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}\). Use sliders to change \(\zeta, \omega_n, K\). Plots: step & impulse. Poles shown in s-plane.</div>
+    </div>
+
+    <div class="card controls">
+      <div>
+        <label>Natural frequency ω<sub>n</sub> (rad/s): <span id="wnVal">2.0</span></label>
+        <input id="wn" type="range" min="0.5" max="8" step="0.1" value="2.0">
+      </div>
+      <div>
+        <label>Damping ratio ζ: <span id="zetaVal">0.25</span></label>
+        <input id="zeta" type="range" min="0" max="2" step="0.01" value="0.25">
+      </div>
+      <div>
+        <label>DC gain K: <span id="KVal">1.0</span></label>
+        <input id="K" type="range" min="0.1" max="3" step="0.1" value="1.0">
+      </div>
+      <div>
+        <label>Sim duration (s): <span id="tfinalVal">10</span></label>
+        <input id="tfinal" type="range" min="2" max="30" step="1" value="10">
+      </div>
+
+      <div class="row" style="grid-column:1/-1;margin-top:6px">
+        <button id="playPause">Pause</button>
+        <button id="reset">Reset t=0</button>
+        <div style="margin-left:auto;font-size:13px;color:#cfe">Case: <span id="caseLabel">Underdamped</span></div>
+      </div>
+      <div class="small">Formulas used: analytic inverse Laplace. Step: y(t) depends on ζ cases (underdamped/crit/overdamped).</div>
+    </div>
+  </div>
+
+  <div class="canvasRow">
+    <div class="card" style="flex:1;padding:10px">
+      <canvas id="plotCanvas" width="720" height="360"></canvas>
+    </div>
+
+    <div class="card" style="width:320px;padding:10px">
+      <canvas id="splane" width="300" height="300"></canvas>
+      <div class="small" style="margin-top:8px">s-plane: poles indicated (×). Imag axis vertical, Real axis horizontal.</div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+/* Utility & parameters */
+const plotCanvas = document.getElementById('plotCanvas');
+const pctx = plotCanvas.getContext('2d');
+const sCanvas = document.getElementById('splane');
+const sctx = sCanvas.getContext('2d');
+
+const wnSlider = document.getElementById('wn');
+const zetaSlider = document.getElementById('zeta');
+const KSlider = document.getElementById('K');
+const tfSlider = document.getElementById('tfinal');
+const wnVal = document.getElementById('wnVal');
+const zetaVal = document.getElementById('zetaVal');
+const KVal = document.getElementById('KVal');
+const tfinalVal = document.getElementById('tfinalVal');
+const caseLabel = document.getElementById('caseLabel');
+const playPauseBtn = document.getElementById('playPause');
+const resetBtn = document.getElementById('reset');
+
+let wn = parseFloat(wnSlider.value);
+let zeta = parseFloat(zetaSlider.value);
+let K = parseFloat(KSlider.value);
+let tFinal = parseFloat(tfSlider.value);
+
+wnVal.textContent = wn.toFixed(2);
+zetaVal.textContent = zeta.toFixed(2);
+KVal.textContent = K.toFixed(2);
+tfinalVal.textContent = tFinal.toFixed(0);
+
+let t = 0;
+let running = true;
+
+/* compute analytic time responses for step & impulse */
+function stepResponse(tArr, K, wn, zeta) {
+  const y = new Array(tArr.length);
+  if (zeta < 1 - 1e-6) {
+    // underdamped
+    const wd = wn * Math.sqrt(1 - zeta*zeta);
+    const A = K;
+    const phi = Math.acos(zeta); // alternative param
+    for (let i=0;i<tArr.length;i++){
+      const tt = tArr[i];
+      y[i] = A*(1 - (1/Math.sqrt(1 - zeta*zeta)) * Math.exp(-zeta*wn*tt) * Math.sin(wd*tt + Math.atan(Math.sqrt(1 - zeta*zeta)/zeta)));
+      // More stable form: using standard expression
+      // y = K*(1 - (1/Math.sqrt(1-zeta^2)) * exp(-zeta*wn*t) * sin(wd*t + acos(zeta)));
+      // But we'll prefer sin(wd*t + acos(zeta)).
+      y[i] = K*(1 - (1/Math.sqrt(1 - zeta*zeta)) * Math.exp(-zeta*wn*tt) * Math.sin(wd*tt + Math.acos(zeta)));
+    }
+  } else if (Math.abs(zeta - 1) < 1e-6) {
+    // critically damped
+    for (let i=0;i<tArr.length;i++){
+      const tt = tArr[i];
+      y[i] = K*(1 - Math.exp(-wn*tt)*(1 + wn*tt));
+    }
+  } else {
+    // overdamped: real distinct roots
+    const s1 = -wn*(zeta) + wn*Math.sqrt(zeta*zeta - 1);
+    const s2 = -wn*(zeta) - wn*Math.sqrt(zeta*zeta - 1);
+    // step response: K*(1 + (s1*exp(s2 t) - s2*exp(s1 t)) / (s2 - s1))  ??? Let's derive cleanly:
+    // For G(s)=K wn^2 /(s^2 + 2 zeta wn s + wn^2), step Y(s)=G(s)/s. Inverse Laplace yields combination of exponentials:
+    const denom = s1 - s2; // not zero
+    for (let i=0;i<tArr.length;i++){
+      const tt = tArr[i];
+      const term = (s1 * Math.exp(s2*tt) - s2 * Math.exp(s1*tt)) / denom;
+      y[i] = K*(1 - term);
+    }
+  }
+  return y;
+}
+
+function impulseResponse(tArr, K, wn, zeta) {
+  const y = new Array(tArr.length);
+  if (zeta < 1 - 1e-6) {
+    const wd = wn * Math.sqrt(1 - zeta*zeta);
+    for (let i=0;i<tArr.length;i++){
+      const tt = tArr[i];
+      y[i] = K * wn/ (wd) * Math.exp(-zeta*wn*tt) * Math.sin(wd*tt);
+      // scaled so that area equals DC gain? For canonical second order impulse of wn^2/(s^2+2ζω_n s+ω_n^2)
+      // actual impulse response: K * wn^2 / wd * exp(-ζω_n t) * sin(wd t)
+      y[i] = K * (wn*wn / wd) * Math.exp(-zeta*wn*tt) * Math.sin(wd*tt);
+    }
+  } else if (Math.abs(zeta - 1) < 1e-6) {
+    for (let i=0;i<tArr.length;i++){
+      const tt = tArr[i];
+      // impulse response for critical: K*wn^2 * t * exp(-wn t)
+      y[i] = K * wn*wn * tt * Math.exp(-wn*tt);
+    }
+  } else {
+    // overdamped: impulse is combination of exponentials
+    const s1 = -wn*(zeta) + wn*Math.sqrt(zeta*zeta - 1);
+    const s2 = -wn*(zeta) - wn*Math.sqrt(zeta*zeta - 1);
+    const A = K*wn*wn / (s1 - s2);
+    for (let i=0;i<tArr.length;i++){
+      const tt = tArr[i];
+      y[i] = A * ( Math.exp(s1*tt) - Math.exp(s2*tt) );
+    }
+  }
+  return y;
+}
+
+/* canvas plotting helpers */
+function clearPlot() {
+  pctx.clearRect(0,0,plotCanvas.width,plotCanvas.height);
+}
+function drawAxes() {
+  const w=plotCanvas.width, h=plotCanvas.height;
+  pctx.save();
+  // background grid
+  pctx.fillStyle = '#041725';
+  pctx.fillRect(0,0,w,h);
+  pctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  pctx.lineWidth = 1;
+  for(let gx=0;gx<=10;gx++){
+    pctx.beginPath();
+    pctx.moveTo(gx*(w/10),0);
+    pctx.lineTo(gx*(w/10),h);
+    pctx.stroke();
+  }
+  for(let gy=0;gy<=8;gy++){
+    pctx.beginPath();
+    pctx.moveTo(0,gy*(h/8));
+    pctx.lineTo(w,gy*(h/8));
+    pctx.stroke();
+  }
+  // axes
+  pctx.strokeStyle = 'rgba(255,255,255,0.18)';
+  pctx.lineWidth = 2;
+  pctx.beginPath();
+  pctx.moveTo(40,10); pctx.lineTo(40,h-30); pctx.lineTo(w-10,h-30); pctx.stroke();
+  // labels
+  pctx.fillStyle = '#bfe';
+  pctx.font = '13px system-ui';
+  pctx.fillText('Time (s)', w/2, h-6);
+  pctx.fillText('Output', 6, 20);
+  pctx.restore();
+}
+
+function plotCurve(tArr, yArr, color, label) {
+  const w = plotCanvas.width, h = plotCanvas.height;
+  // map time 0..tFinal -> x from 44..w-14
+  const x0 = 44, x1 = w-14;
+  // map y: determine y-range automatically using max of arrays (allow negative)
+  // We'll compute yMin,yMax from data
+  let yMin = Math.min(...yArr), yMax = Math.max(...yArr);
+  // pad
+  const pad = (yMax - yMin) * 0.2 || 0.5;
+  yMin -= pad; yMax += pad;
+  // store globals for axis ticks
+  lastYRange = {min:yMin, max:yMax};
+
+  pctx.save();
+  pctx.beginPath();
+  pctx.lineWidth = 2.2;
+  pctx.strokeStyle = color;
+  for (let i=0;i<tArr.length;i++){
+    const tx = Number(tArr[i]);
+    const x = x0 + (tx / tFinal) * (x1 - x0);
+    const y = ( (yMax - yArr[i]) / (yMax - yMin) ) * (h - 44) + 12;
+    if (i===0) pctx.moveTo(x,y); else pctx.lineTo(x,y);
+  }
+  pctx.stroke();
+
+  // label
+  pctx.fillStyle = color;
+  pctx.font = '12px system-ui';
+  pctx.fillText(label, x1 - 80, 20 + (label === 'Step' ? 0 : 14));
+  pctx.restore();
+
+  // draw y ticks on left using yMin/yMax
+  pctx.save();
+  pctx.fillStyle = '#9fd';
+  pctx.font = '11px system-ui';
+  pctx.fillText(yMax.toFixed(2),6,28);
+  pctx.fillText(((yMax+yMin)/2).toFixed(2),6, (h/2));
+  pctx.fillText(yMin.toFixed(2),6,h-36);
+  pctx.restore();
+}
+
+/* s-plane drawing */
+function drawSplane(wn,zeta) {
+  const W = sCanvas.width, H = sCanvas.height;
+  sctx.clearRect(0,0,W,H);
+  sctx.save();
+  // background
+  sctx.fillStyle = '#00121a';
+  sctx.fillRect(0,0,W,H);
+  // axes center
+  const cx = W/2, cy = H/2;
+  sctx.strokeStyle = 'rgba(255,255,255,0.12)'; sctx.lineWidth = 1;
+  sctx.beginPath(); sctx.moveTo(0,cy); sctx.lineTo(W,cy); sctx.moveTo(cx,0); sctx.lineTo(cx,H); sctx.stroke();
+  sctx.fillStyle = '#bfe'; sctx.font='12px system-ui';
+  sctx.fillText('Re', W-24, cy-6);
+  sctx.fillText('Im', cx+6, 12);
+
+  // poles
+  const poles = computePoles(wn,zeta);
+  for(const p of poles){
+    // map s-plane coords: Re range [-4*wn, 2*wn], Im [-4*wn,4*wn]
+    const reRange = wn*4;
+    const imRange = wn*4;
+    const x = cx + (p.re / reRange) * (W/2 - 20);
+    const y = cy - (p.im / imRange) * (H/2 - 20);
+    // cross
+    sctx.strokeStyle = '#ff8';
+    sctx.beginPath();
+    sctx.moveTo(x-8,y-8); sctx.lineTo(x+8,y+8);
+    sctx.moveTo(x-8,y+8); sctx.lineTo(x+8,y-8);
+    sctx.stroke();
+    sctx.fillStyle = '#ffd';
+    sctx.fillText(`(${p.re.toFixed(2)}, ${p.im.toFixed(2)}j)`, x+10, y-6);
+  }
+  sctx.restore();
+}
+
+function computePoles(wn,zeta){
+  const disc = zeta*zeta - 1;
+  if (disc < 0) {
+    const re = -zeta*wn;
+    const im = wn*Math.sqrt(1 - zeta*zeta);
+    return [{re:re, im:im}, {re:re, im:-im}];
+  } else {
+    const s1 = -zeta*wn + wn*Math.sqrt(disc);
+    const s2 = -zeta*wn - wn*Math.sqrt(disc);
+    return [{re:s1, im:0}, {re:s2, im:0}];
+  }
+}
+
+/* main render tick */
+let lastYRange = {min:-1, max:1};
+
+function renderOnce() {
+  clearPlot();
+  drawAxes();
+
+  // prepare time vector
+  const dt = Math.max(0.002, tFinal / 800); // resolution
+  const tArr = [];
+  for (let tt=0; tt<=tFinal+1e-9; tt+=dt) tArr.push(Number(tt.toFixed(6)));
+
+  const ys = stepResponse(tArr, K, wn, zeta);
+  const yi = impulseResponse(tArr, K, wn, zeta);
+
+  plotCurve(tArr, ys, '#6be7ff', 'Step');
+  plotCurve(tArr, yi, '#ffa3ff', 'Impulse');
+
+  // title with current parameters
+  pctx.save();
+  pctx.fillStyle = '#cfe';
+  pctx.font = '13px system-ui';
+  pctx.fillText(`K=${K.toFixed(2)}, ω_n=${wn.toFixed(2)}, ζ=${zeta.toFixed(2)}  (t final=${tFinal}s)`, 48, 18);
+  pctx.restore();
+
+  drawSplane(wn,zeta);
+
+  // update case label
+  const caseName = (zeta<1-1e-6) ? 'Underdamped' : (Math.abs(zeta-1)<1e-6 ? 'Critically damped' : 'Overdamped');
+  caseLabel.textContent = caseName;
+}
+
+/* animation loop (for time evolution of t marker) */
+let animId = null;
+function animate() {
+  if (!running) { cancelAnimationFrame(animId); return; }
+  renderOnce();
+  // draw current time vertical marker
+  const w=plotCanvas.width, h=plotCanvas.height;
+  const x0 = 44, x1 = w-14;
+  const x = x0 + (t / tFinal) * (x1 - x0);
+  pctx.save();
+  pctx.strokeStyle = 'rgba(255,240,120,0.9)'; pctx.lineWidth=1.8;
+  pctx.beginPath(); pctx.moveTo(x,12); pctx.lineTo(x,h-34); pctx.stroke();
+  pctx.fillStyle = 'rgba(255,240,120,0.95)';
+  pctx.font='12px system-ui';
+  pctx.fillText(`t=${t.toFixed(2)}s`, x+6, 30);
+  pctx.restore();
+
+  // advance time marker (looping)
+  t += 0.03;
+  if (t > tFinal) t = 0;
+  animId = requestAnimationFrame(animate);
+}
+
+/* UI bindings */
+wnSlider.addEventListener('input', ()=>{ wn = parseFloat(wnSlider.value); wnVal.textContent = wn.toFixed(2); renderOnce(); });
+zetaSlider.addEventListener('input', ()=>{ zeta = parseFloat(zetaSlider.value); zetaVal.textContent = zeta.toFixed(2); renderOnce(); });
+KSlider.addEventListener('input', ()=>{ K = parseFloat(KSlider.value); KVal.textContent = K.toFixed(2); renderOnce(); });
+tfSlider.addEventListener('input', ()=>{ tFinal = parseFloat(tfSlider.value); tfinalVal.textContent = tFinal.toFixed(0); renderOnce(); });
+
+playPauseBtn.addEventListener('click', ()=>{
+  running = !running;
+  playPauseBtn.textContent = running ? 'Pause' : 'Play';
+  if (running) animate(); else cancelAnimationFrame(animId);
+});
+resetBtn.addEventListener('click', ()=>{ t = 0; renderOnce(); });
+
+/* initial draw */
+renderOnce();
+animate();
+
+</script>
+</body>
+</html>
